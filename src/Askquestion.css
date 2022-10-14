@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0 !important;
+  font-family: halvetica calibri, futura;
+}
+
+.topper-div {
+  /* height: 14rem; */
+  border: 1px solid black;
+  /* width: calc(100% - 30px); */
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header {
+  background-color: rgb(98, 81, 196);
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  padding: 5px 20px !important;
+}
+
+.pre-header {
+  font-size: 18px;
+  font-family: halvetica;
+}
+
+.post-header {
+  cursor: pointer;
+}
+
+.text-area {
+  background-color: #f6f6f6;
+  /* border: 1px solid  #c7c7c7; */
+  min-height: 90px !important;
+}
+
+.text-area:focus {
+  outline: none !important;
+}
+
+.footer-button {
+  background-color: rgb(98, 81, 196);
+  height: 30px;
+  width: 110px;
+  align-items: center;
+  justify-content: center;
+  border: transparent;
+  cursor: pointer;
+  border-radius: 15px;
+  color: white;
+  line-height: 14px;
+  font-weight: 700;
+}
+
+.font-color {
+  color: #3f4b8c;
+}
+
+/* ShareModal.js file data */
+.share-modal-class{
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+
+}
+
+.share-text {
+  font-size: 20px;
+  font-family: halvetica calibri, futura;
+  font-style: normal;
+}
+
+.icon-span {
+  padding-right: 10px !important;
+}
+
+.cross-icon {
+  color: white;
+  height: 17px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0, 0.6);
+  text-align: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.fb-icon {
+  font-size: 30px;
+  color: #3f4b8c;
+}
+.hide-text {
+  display: none;
+}
+.fb-icon :hover {
+  color: white !important;
+  background-color: white !important;
+}
+.twitter-icon {
+  height: 31px;
+  width: 33px;
+  border-radius: 50%;
+  background-color: #549ff1;
+  align-items: center;
+  justify-content: center;
+}
+.icon-list,
+.icon-link {
+  color: white;
+  font-size: 20px;
+}
+
+.link-icon {
+  height: 31px;
+  width: 33px;
+  border-radius: 50%;
+  background-color: #404040;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* CardProduct.js */
+.card-product-main-div {
+  background-color: #32302f !important;
+  opacity: 0.9;
+  color: white;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  width: 100.5% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 13rem !important;
+}
+.image-details {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+.card-product-para {
+  padding-left: 10px !important;
+  font-size: 15px;
+}
+
+.icon-close {
+  color: black;
+  height: 16px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: #ffff;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.card-product-another-button,
+.card-product-button {
+  background-color: transparent;
+  color: #eeeeee !important;
+  border: 1px solid #684bc4;
+  border-radius: 16px;
+  font-weight: 500;
+  height: 2.6rem;
+  width: 6.5rem;
+  text-align: center;
+  font-style: normal;
+  align-items: center;
+  padding: 0 6px !important;
+}
+.card-product-button {
+  background-color: #684bc4;
+  margin-left: 18px;
+}
+
+/* SmallCardProduct */
+
+.small-card-product-image {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+.remove-icon{
+  
+  color: black;
+  height: 16px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: #ffff;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.small-card-container{
+  background-color: #3a3938 !important;
+  border-radius: 5px !important;
+  color: white;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+
+.small-card-container-body{
+  border: 0 !important;
+  border-bottom: 2px solid #5c5c5c !important;
+
+}
+.small-card-arrow{
+  cursor: pointer;
+}
+
+
+.card-list-item-details{
+  background-color: #32302f !important;
+  opacity: 0.9;
+  color: white;
+  width: 100.5% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 13rem !important;
+}
+
+/* CarToyProduct.js */
+
+.car-toy-product-div{
+  background-color: #3a3938 !important;
+  opacity: 0.9;
+  color: white;
+  }
+
+  /* ThreeDots */
+
+  
+  .ollicraft-modal{
+    height: 7rem;
+    width: 7rem;
+    margin-left: 120px;
+  }
+
+  .three-dots-p-tag{
+    font-size: 16px;
+    font-style: normal;
+  }
+
+  .three-dots-image-tag{
+      height: 1.5rem;
+      width: 4rem;  
+      margin-left: 130px;
+      padding: 3px !important;
+      border-radius: 5px;
+  } 
+  .three-dots-div-tag{
+    margin-top: 550px;
+    margin-bottom: 50px;
+  }
+  .card-opacity-color{
+    opacity: 0.9;
+  }
