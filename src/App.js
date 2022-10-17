@@ -19,10 +19,10 @@ function App() {
   return (
     <div className="">
       
-      {/* <Responsive />    */}
-      {/* <div  style={{display : "none"}}>    */}
+      <Responsive />   
+      <div  style={{display : "none"}}>   
       <ModalSlider  />
-      {/* </div> */}
+      </div>
       {/* <MouseOver /> */}
       {/* <button
         className="openModalBtn"

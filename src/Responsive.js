@@ -5,14 +5,14 @@ import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./swirl.css";
 import { Card, Image, ProgressBar } from "react-bootstrap";
-import { getActiveElement } from "@testing-library/user-event/dist/utils";
 // import video from "../src/videos/video.mp4";
 // import ModalSlider from "./ModalSlider";
 
 
 
 const Responsive = () => {
-  const [isShown, setIsShown] = useState(true);
+  // const [isShown, setIsShown] = useState(true);
+  const [style, setStyle] = useState({display: 'block'});
   // const [isgiven, setIsgiven] = useState(true);
   // const [isstate, setIsstate] = useState(true);
   // const [isover, setIsover] =   useState(true);
@@ -30,6 +30,7 @@ const Responsive = () => {
    },[]) 
    
 console.log(data); 
+// console.log('My data: '+ data.video[0].product[0].product_id );
 
    
   var settings = {
@@ -73,41 +74,37 @@ console.log(data);
   const shoot = () => {
     document.querySelector('#firstComponent').click();
   }
+  
 
   return (
     <div className="container" id = "closeModal-id">
-
-     
-      
       <br /><br /> <br /> <br />
       <Slider {...settings} >
        
           
         {
-        data.swilrs?.video?.map((item,index)=>{
-          var a = document.querySelector('.slider-video');
-          // console.log{$(video.duration)}
-          console.log(`The video is ${a.duration} seconds long.`);
-
-       
+        data.swilrs?.video?.map((item)=>{
        return( <div>   <Card
           onClick={shoot}
             className="border-0 shabaash"
-            onMouseEnter={() => setIsShown(false)}
-            onMouseLeave={() => setIsShown(true)}
+            // onMouseEnter={() => setIsShown(false)}
+            // onMouseLeave={() => setIsShown(true)}
+                 onMouseOver={(e) => {
+                     setStyle({display: 'none'});
+                 }}
+                 onMouseOut ={(e)=>{
+                  setStyle({display: 'block'});
+                 }}
+            >
 
-
-            
-          >
             <Card.Body className="p-0 d-flex">
               <video
                 className=" slider-video card-video"
-                play={item.auto_play}
+                // play={item.auto_play}
                 src={item.video_url}
                 loop
-                // onMouseOver={(event) => event.target.play()}
-                onMouseOver={item.auto_play}
-                // onMouseOut={(event) => event.target.pause()}
+                onMouseOver={(event) => event.target.play()}
+                onMouseOut={(event) => event.target.pause()}
                 
                 mute={item.uto_play_mute_un}
                 loading="lazy"
@@ -122,14 +119,14 @@ console.log(data);
               <div className="video-timer">
                 <span>{item.time_sec} </span>
               </div>
-              <div className="modal-button modalSliderDiv">
+              <div className="modal-button modal_btn">
                 
-              {isShown &&
+              {/* {isShown && */}
                   
-                  <button className="me-2 mb-2 button-border">
+                  <button className="me-2 mb-2 button-border" style={style}>
                   <i className="fa fa-play icon-size"></i></button>
                  
-               }
+               {/* } */}
               
               </div>
             </Card.Body>
@@ -141,10 +138,13 @@ console.log(data);
                 />{" "}
               </div>
               <h5 className="footer-heading">
-                <b>{item.product.title}</b>
+                <b>{item.product_title}</b>
               </h5>
               <p className="price-card">
-                <b>₹ 549</b>
+                <b>{item.product.map((sub)=>
+                  sub.price
+                )}</b>
+                {/* {sub.discount_price} */}
               </p>
               <ProgressBar
                 className="p-bar"

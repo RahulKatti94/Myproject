@@ -109,6 +109,7 @@
   margin: 0;
   padding: 0;
 }
+
 .shabaash {
   margin: 0 1rem 0 !important;
   border : none !important;
@@ -133,6 +134,7 @@
   align-items: center;
   justify-content: center;
 }
+
 
 .icon-size {
   font-size: 20px;

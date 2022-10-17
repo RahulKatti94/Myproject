@@ -53,8 +53,6 @@ console.log(data);
       }
     });
   }
-  const obj = document.getElement('video'); 
-  console.log(obj.duration); // NaN
 
 
   // function carPrizeBlog() {
