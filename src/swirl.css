@@ -353,3 +353,13 @@
   position: absolute;
   
 }
+
+/* IFrame.js */ 
+.iframe-main-div{
+  z-index: 10;
+  position: absolute;
+  bottom: 0rem;
+  right: -103rem;
+  border: transparent !important;
+  outline:  none !important;
+}

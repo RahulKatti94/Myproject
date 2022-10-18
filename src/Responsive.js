@@ -32,6 +32,9 @@ const Responsive = () => {
 console.log(data); 
 // console.log('My data: '+ data.video[0].product[0].product_id );
 
+
+
+
    
   var settings = {
     speed: 500,
@@ -99,6 +102,7 @@ console.log(data);
 
             <Card.Body className="p-0 d-flex">
               <video
+              id="video"
                 className=" slider-video card-video"
                 // play={item.auto_play}
                 src={item.video_url}
@@ -121,12 +125,10 @@ console.log(data);
               </div>
               <div className="modal-button modal_btn">
                 
-              {/* {isShown && */}
+              
                   
                   <button className="me-2 mb-2 button-border" style={style}>
                   <i className="fa fa-play icon-size"></i></button>
-                 
-               {/* } */}
               
               </div>
             </Card.Body>
@@ -143,13 +145,20 @@ console.log(data);
               <p className="price-card">
                 <b>{item.product.map((sub)=>
                   sub.price
-                )}</b>
+                )}</b> <br />
+                {item.product.map((sub)=>{sub.discount_price = item.product.price ? null : sub.discount_price
+                  
+                }
+                
+                )}
                 {/* {sub.discount_price} */}
               </p>
+
               <ProgressBar
                 className="p-bar"
                 now="30"
                 style={{ width: "100%" }}
+                
                 variant="secondary"
                 play= {item.auto_play_video}
               />

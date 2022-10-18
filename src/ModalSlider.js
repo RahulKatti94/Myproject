@@ -18,6 +18,7 @@ import ShareModal from "./ShareModal";
 import ThreeDots from "./ThreeDots";
 import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
+import Iframe from "./Iframe";
 
 export const ModalSlider = () => {
   const values = [true];
@@ -25,6 +26,21 @@ export const ModalSlider = () => {
   const [show, setShow] = useState(false);
 
   const[data,setData] = useState([]);  
+
+  
+
+  const handleClick = () => {
+
+    // alert();
+
+     const closeFrameElement = document.getElementById("iframeTarget");
+
+        if (closeFrameElement.style.display !== "none") {
+         closeFrameElement.style.display = "none";
+        } else {
+         closeFrameElement.style.display = "block";
+        }
+   }
 
   useEffect(()=>{
    fetch('https://api.goswirl.live/index.php/shopify/videolistingV2?user=pl8fbadv').then(y=>y.json()).then(y => {setData(y)
@@ -138,6 +154,8 @@ console.log(data);
                   <span className="icon-border">
                     <Image
                       className="modal-first-para"
+                      id="closeIconId"
+                      onClick={() => {setShow(false); handleClick()} }
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
                   </span>
@@ -155,7 +173,7 @@ console.log(data);
                   <span
                     className="icon-border"
                     id="closeIconId"
-                    onClick={() => setShow(false)}
+                    onClick={() => setShow(false)}  
                   >
                     {/* <i className="fa-solid fa-xmark doticons only-icon-details"></i> */}
                     <label
@@ -172,16 +190,20 @@ console.log(data);
                 >
                   <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot1")} />
                 </div>
-
+                
                 <video
                   className=" slider-video vidio"
                   src={video}
                   loop
                   autoPlay
-                  mute
+                  mute  
                   loading="lazy"
                   style={clickModal}
                 ></video>
+
+               
+               
+              
                 <div
                   className="Small-card-product-component target-image1"
                   style={{ display: "none" }}
@@ -239,6 +261,11 @@ console.log(data);
                       src="/images/car.jpg"
                     />
                   </div>
+                  <div   
+                id="iframeTarget" className="iframe-main-div"
+                onClick={() => setShow(false)}>
+                  <Iframe showSmallFrameCode = {() => shareIconModal("iframe-key")} />
+                </div>
                 </Card.Body>
               </Card>
             </div>

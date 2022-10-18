@@ -12,7 +12,10 @@ import Responsive from './Responsive';
 // import ShareModal from './ShareModal';
 // import SmallCardProduct from './SmallCardProduct';
 // import FetchApi from "./FetchApi";
+// import VideoSection from './VideoSection';
+// 
 
+import Iframe from './Iframe';
 function App() {
 
   // const [modalOpen, setModalOpen] = useState(false);
@@ -45,6 +48,8 @@ function App() {
        {/* <ThreeDots /> */}
        {/* <UseEffectAPi /> */}
        {/* <FetchApi /> */}
+       {/* <VideoSection /> */}
+       {/* <Iframe /> */}
             
     </div>
   );

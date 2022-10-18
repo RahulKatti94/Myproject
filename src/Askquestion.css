@@ -257,3 +257,16 @@
   .card-opacity-color{
     opacity: 0.9;
   }
+
+
+  /* IFrame.js */
+
+.video-card-icon-div{
+  width: 20%;
+}
+
+  .icon-remove-top{
+   position: absolute; 
+   top: 15px;
+   right: 5px;
+  }
