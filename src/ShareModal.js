@@ -8,11 +8,11 @@ const ShareModal = ({showShareModal}) => {
     <div className="container share-modal-class">
       <div className="card">
         <div className="card-body">
-          <div className="row m-2">
-            <div className="col-7 text-end">
+          <div className="row m-0">
+            <div className="col-6 text-end">
               <span className="share-text"> Share to </span>
             </div>
-            <div className="col-5 text-end">
+            <div className="col-6 text-end">
               <span className="icon-span"
               onClick={showShareModal}>
                 <i className="fa-solid fa-xmark cross-icon"> </i>
@@ -21,9 +21,9 @@ const ShareModal = ({showShareModal}) => {
           </div>
        
         <div className="row m-4">
-          <div className="col-4">
+          <div className="col-5">
           </div>
-          <div className="col-6 d-flex justify-content-between bg-transparent">
+          <div className="col-3 d-flex justify-content-between bg-transparent">
           <span>
             {/* <Link to= "/#"><i className="fa-brands fa-facebook font-color"></i></Link> */}
             <a title={"share to facebook"} href="https://social.msdn.microsoft.com/Forums/sqlserver/en-US/f362f061-c8dd-41a5-a0ff-c0c66a737fec/website-testing-with-random-urls?forum=vstest">
@@ -44,7 +44,7 @@ const ShareModal = ({showShareModal}) => {
             <span className=" d-flex link-icon">
             <i title={"Copy Link"} class="fa-solid fa-link icon-link"></i>
             </span>
-            <div className="col-2">
+            <div className="col-4">
           </div>
          
           </div>
@@ -55,4 +55,4 @@ const ShareModal = ({showShareModal}) => {
   );
 };
 
-export default ShareModal
+export default ShareModal;

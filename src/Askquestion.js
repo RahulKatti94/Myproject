@@ -20,9 +20,7 @@ const Askquestion = ({showQuestionDiv}) => {
               <textarea
                 required
                 className="text-area"
-                rows={3}
-                cols = {56}
-
+                rows="3"
                 placeholder="Type here"
               />
             </div>

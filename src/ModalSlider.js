@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Modal from "react-bootstrap/Modal";
 import "./swirl.css";
@@ -20,37 +20,34 @@ import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
 import Iframe from "./Iframe";
 
-export const ModalSlider = () => {
+export const ModalSlider = (props) => {
   const values = [true];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
-  const[data,setData] = useState([]);  
+  const {data} = props;
 
-  
+  console.log("datata", data)
 
   const handleClick = () => {
 
     // alert();
 
-     const closeFrameElement = document.getElementById("iframeTarget");
+    const closeFrameElement = document.getElementById("iframeTarget");
 
-        if (closeFrameElement.style.display !== "none") {
-         closeFrameElement.style.display = "none";
-        } else {
-         closeFrameElement.style.display = "block";
-        }
-   }
+    if (closeFrameElement.style.display !== "none") {
+      closeFrameElement.style.display = "none";
+    } else {
+      closeFrameElement.style.display = "block";
+    }
+  }
 
-  useEffect(()=>{
-   fetch('https://api.goswirl.live/index.php/shopify/videolistingV2?user=pl8fbadv').then(y=>y.json()).then(y => {setData(y)
-}); 
 
-  },[]) 
-  
-console.log(data); 
- 
-
+  useEffect(() => {
+    if (data) {
+      setShow(true)
+    }
+  }, [props])
   // ------------------------------------- CARD OPENModal ---------------------------------------//
 
 
@@ -120,7 +117,7 @@ console.log(data);
 
   return (
     <div className="text-center">
-      {values.map((v, idx) => (
+      {/* {values.map((v, idx) => (
         <button
           key={idx}
           className="me-2 mb-2  button-border"
@@ -130,7 +127,7 @@ console.log(data);
           Full screen
           {typeof v === "string" && `below ${v.split("-")[0]}`}
         </button>
-      ))}
+      ))} */}
 
       <Modal
         className="cross-button h-100"
@@ -155,7 +152,7 @@ console.log(data);
                     <Image
                       className="modal-first-para"
                       id="closeIconId"
-                      onClick={() => {setShow(false); handleClick()} }
+                      onClick={() => { setShow(false); handleClick() }}
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
                   </span>
@@ -173,7 +170,7 @@ console.log(data);
                   <span
                     className="icon-border"
                     id="closeIconId"
-                    onClick={() => setShow(false)}  
+                    onClick={() => {setShow(false); props.onModalClose()}}
                   >
                     {/* <i className="fa-solid fa-xmark doticons only-icon-details"></i> */}
                     <label
@@ -190,20 +187,20 @@ console.log(data);
                 >
                   <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot1")} />
                 </div>
-                
+
                 <video
                   className=" slider-video vidio"
-                  src={video}
+                  src={data?.video_url}
                   loop
                   autoPlay
-                  mute  
+                  mute
                   loading="lazy"
                   style={clickModal}
                 ></video>
 
-               
-               
-              
+
+
+
                 <div
                   className="Small-card-product-component target-image1"
                   style={{ display: "none" }}
@@ -261,11 +258,11 @@ console.log(data);
                       src="/images/car.jpg"
                     />
                   </div>
-                  <div   
-                id="iframeTarget" className="iframe-main-div"
-                onClick={() => setShow(false)}>
-                  <Iframe showSmallFrameCode = {() => shareIconModal("iframe-key")} />
-                </div>
+                  {/* <div
+                    id="iframeTarget" className="iframe-main-div"
+                    onClick={() => setShow(false)}>
+                    <Iframe showSmallFrameCode={() => shareIconModal("iframe-key")} />
+                  </div> */}
                 </Card.Body>
               </Card>
             </div>
@@ -549,8 +546,8 @@ console.log(data);
                     ></img>
                   </span>
                   <span className="icon-border"
-                  id="closeIconId"
-                  onClick={() => setShow(false)}>
+                    id="closeIconId"
+                    onClick={() => setShow(false)}>
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
                       className="close-modal"

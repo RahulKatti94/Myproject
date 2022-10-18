@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./swirl.css";
 import { Card, Image, ProgressBar } from "react-bootstrap";
-import ModalSlider from "./ModalSlider";
+// import { getActiveElement } from "@testing-library/user-event/dist/utils";
 // import video from "../src/videos/video.mp4";
 // import ModalSlider from "./ModalSlider";
 
 
 
 const Responsive = () => {
-  // const [isShown, setIsShown] = useState(true);
-  const [style, setStyle] = useState({ display: 'block' });
-  const [mouseHoverElementIndex, setmouseHoverElementIndex] = useState();
-  const [showModalSlider, setshowModalSlider] = useState(false);
-  const [selectedEvent, setselectedEvent] = useState();
+  const [isShown, setIsShown] = useState(true);
   // const [isgiven, setIsgiven] = useState(true);
   // const [isstate, setIsstate] = useState(true);
   // const [isover, setIsover] =   useState(true);
@@ -24,22 +20,18 @@ const Responsive = () => {
   // const [istaken, setIstaken] = useState(true);
   // const [isdone, setIsdone] = useState(true);
 
+ 
+  const[data,setData] = useState([]);  
 
-  const [data, setData] = useState([]);
+   useEffect(()=>{
+    fetch('https://api.goswirl.live/index.php/shopify/videolistingV2?user=pl8fbadv').then(y=>y.json()).then(y => {setData(y)
+}); 
 
-  useEffect(() => {
-    fetch('https://api.goswirl.live/index.php/shopify/videolistingV2?user=pl8fbadv').then(y => y.json()).then(y => {
-      setData(y)
-    });
+   },[]) 
+   
+console.log(data); 
 
-  }, [])
-
-  console.log(data);
-  // console.log('My data: '+ data.video[0].product[0].product_id );
-
-
-
-
+   
   var settings = {
     speed: 500,
     infinite: false,
@@ -79,115 +71,97 @@ const Responsive = () => {
   };
 
   const shoot = (event) => {
-    // document.querySelector('#firstComponent').click();
-    setshowModalSlider(true);
-    setselectedEvent(event)
+    alert(event.target.src)
+    document.querySelector('#firstComponent').click();
+     document.getElementById('videourl').src=event.target.src;
   }
 
+  return (~
+    <div className="container" id = "closeModal-id">
 
-  return (
-    <div className="container" id="closeModal-id">
+     
+      
       <br /><br /> <br /> <br />
-      {
-        !showModalSlider ?
-          <Slider {...settings} >
+      <Slider {...settings} >
+       
+          
+        {
+        data.swilrs?.video?.map((item)=>{
+          
+                    <video src={item.video_url}>
+
+                    </video>
+       
+       return( <div>   <Card
+         
+          // data-id={item.id}
+            className="border-0 shabaash itrm4" data-id="{item.id}"
+        
 
 
-            {
-              data.swilrs?.video?.map((item, index) => {
-                return (<div>   <Card
-                  onClick={() => shoot(item)}
-                  className="border-0 shabaash"
-                  // onMouseEnter={() => setIsShown(false)}
-                  // onMouseLeave={() => setIsShown(true)}
-                  onMouseOver={(e) => {
-                    setmouseHoverElementIndex(index);
-                    setStyle({ display: 'none' });
-                  }}
-                  onMouseOut={(e) => {
-                    setStyle({ display: 'block' });
-                  }}
-                >
-
-                  <Card.Body className="p-0 d-flex">
-                    <video
-                      id="video"
-                      className=" slider-video card-video"
-                      // play={item.auto_play}
-                      src={item.video_url}
-                      loop
-                      onMouseOver={(event) => event.target.play()}
-                      onMouseOut={(event) => event.target.pause()}
-
-                      mute={item.uto_play_mute_un}
-                      loading="lazy"
-                      style={cardDetails}
-                    ></video>
-                    <div className="viewers d-flex">
-                      <span>
-                        <i className="fa fa-eye  f-icon" aria-hidden="true"></i>
-                      </span>
-                      <span>{item.total_views}</span>
-                    </div>
-                    <div className="video-timer">
-                      <span>{item.time_sec} </span>
-                    </div>
-                    <div className="modal-button modal_btn">
-
-
-
-                      <button className="me-2 mb-2 button-border" style={{ display: mouseHoverElementIndex === index ? 'none' : 'block' }}>
-                        <i className="fa fa-play icon-size"></i></button>
-
-                    </div>
-                  </Card.Body>
-                  <Card.Footer className="footer-card border border-top-0">
-                    <div className="footer-pic">
-                      <Image
-                        className="imagesmall w3-round-large"
-                        src="/images/car.jpg"
-                      />{" "}
-                    </div>
-                    {
-                      item.product && item.product.length > 0 ?
-                        item.product.map((itm, idx) => (
-
-                          idx === 0 ?
-                            <>
-                              <h5 className="footer-heading">
-                                <b>{itm.title}</b>
-                              </h5>
-                              <p className="price-card">
-                                <b>{itm.price} </b>
-                                {
-                                  itm.price !== itm.discount_price ?
-                                    <del style={{ fontWeight: 500 }}>{itm.discount_price}</del>
-                                    : null
-                                }
-                                {/* {sub.discount_price} */}
-                              </p>
-                            </>
-                            : null
-
-
-                        ))
-                        : null
-                    }
-
-                    <ProgressBar
-                      className="p-bar"
-                      now="30"
-                      style={{ width: "100%" }}
-
-                      variant="secondary"
-                      play={item.auto_play_video}
-                    />
-                  </Card.Footer>
-                </Card></div>)
-              })
-            }
-
-            {/* <div >
+            
+          >
+            <Card.Body className="p-0 d-flex "  >
+              <video
+                className=" slider-video card-video"
+                play={item.auto_play}
+                src={item.video_url}
+                loop
+                // onMouseOver={(event) => event.target.play()}
+                onMouseOver={item.auto_play}
+                // onMouseOut={(event) => event.target.pause()}
+                onClick = {shoot}
+                
+                mute={item.uto_play_mute_un}
+                loading="lazy"
+                style={cardDetails}
+              ></video>
+              <div className="viewers d-flex">
+                <span>
+                  <i className="fa fa-eye  f-icon" aria-hidden="true"></i>
+                </span>
+                <span>{item.total_views}</span>
+              </div>
+              <div className="video-timer">
+                <span>{item.time_sec} </span>
+              </div>
+              <div className="modal-button modalSliderDiv">
+                
+              {isShown &&
+                  
+                  <button className="me-2 mb-2 button-border">
+                  <i className="fa fa-play icon-size"></i></button>
+                 
+               }
+              
+              </div>
+            </Card.Body>
+            <Card.Footer className="footer-card border border-top-0">
+              <div className="footer-pic">
+                <Image
+                  className="imagesmall w3-round-large"
+                  src="/images/car.jpg"
+                />{" "}
+              </div>
+              <h5 className="footer-heading">
+                <b>{item.product.title}</b>
+              </h5>
+              <p className="price-card">
+                <b>₹ 549</b>
+              </p>
+              <ProgressBar
+                className="p-bar"
+                now="30"
+                style={{ width: "100%" }}
+                variant="secondary"
+                play= {item.auto_play_video}
+              />
+            </Card.Footer>
+          </Card></div>)
+           })
+          }
+        
+        {/* <div >
           
           <Card className="border-0 shabaash" 
             onClick={shoot}
@@ -532,13 +506,10 @@ const Responsive = () => {
             </Card.Footer>
           </Card>
         </div> */}
-          </Slider>
-          :
-          <ModalSlider data={selectedEvent} onModalClose={() => setshowModalSlider(false)}></ModalSlider>
-      }
-
+      </Slider>
+     
     </div>
-
+  
   );
 };
 export default Responsive;

@@ -64,9 +64,7 @@
 /* ShareModal.js file data */
 .share-modal-class{
   position: absolute;
-  bottom: 0;
-  z-index: 5;
-
+  top: 84%;
 }
 
 .share-text {
@@ -130,12 +128,8 @@
   background-color: #32302f !important;
   opacity: 0.9;
   color: white;
-  border: 1px solid transparent !important;
-  border-radius: 10px !important;
-  width: 100.5% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 13rem !important;
+  border: 1px solid white !important;
+  border-radius: 12px !important;
 }
 .image-details {
   height: 3.5rem;
@@ -172,7 +166,6 @@
 }
 .card-product-button {
   background-color: #684bc4;
-  margin-left: 18px;
 }
 
 /* SmallCardProduct */
@@ -194,79 +187,55 @@
 }
 .small-card-container{
   background-color: #3a3938 !important;
-  border-radius: 5px !important;
+  border-radius: 15px !important;
   color: white;
-  width: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 
 .small-card-container-body{
   border: 0 !important;
-  border-bottom: 2px solid #5c5c5c !important;
-
+  border-bottom: 2px solid white !important;
 }
 .small-card-arrow{
   cursor: pointer;
 }
 
-
-.card-list-item-details{
-  background-color: #32302f !important;
-  opacity: 0.9;
-  color: white;
-  width: 100.5% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 13rem !important;
-}
-
 /* CarToyProduct.js */
 
 .car-toy-product-div{
-  background-color: #3a3938 !important;
+  background-color: #32302f !important;
   opacity: 0.9;
   color: white;
   }
 
   /* ThreeDots */
 
-  
+  .three-dots-main-div-class{
+    margin-top: 10px;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    right: 75px;
+     
+
+  }
+
   .ollicraft-modal{
-    height: 7rem;
-    width: 7rem;
-    margin-left: 120px;
+    height: 6.5rem;
+    width: 6.5rem;
   }
 
   .three-dots-p-tag{
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
   }
 
   .three-dots-image-tag{
       height: 1.5rem;
-      width: 4rem;  
-      margin-left: 130px;
-      padding: 3px !important;
-      border-radius: 5px;
+      width: 4rem;
   } 
   .three-dots-div-tag{
-    margin-top: 550px;
+    margin-top: 250px;
     margin-bottom: 50px;
-  }
-  .card-opacity-color{
-    opacity: 0.9;
-  }
-
-
-  /* IFrame.js */
-
-.video-card-icon-div{
-  width: 20%;
-}
-
-  .icon-remove-top{
-   position: absolute; 
-   top: 15px;
-   right: 5px;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Modal.css";
+import "./modal.css";
 
 function Modal({ setOpenModal }) {
   return (
@@ -12,7 +12,7 @@ function Modal({ setOpenModal }) {
             }}
           >
             X
-          </button> 
+          </button>
         </div>
         <div className="title">
           <h1>Are You Sure You Want to Continue?</h1>

@@ -23,9 +23,9 @@ function App() {
     <div className="">
       
       <Responsive />   
-      <div  style={{display : "none"}}>   
+      {/* <div  style={{display : "none"}}>    */}
       <ModalSlider  />
-      </div>
+      {/* </div> */}
       {/* <MouseOver /> */}
       {/* <button
         className="openModalBtn"
@@ -56,6 +56,5 @@ function App() {
 }
 
 export default App;
-
 
 
