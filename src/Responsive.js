@@ -98,6 +98,7 @@ const Responsive = () => {
                 return (<div>   <Card
                   onClick={() => shoot(item)}
                   className="border-0 shabaash"
+                  dataBackdrop="static" dataKeyboard="false"
                   // onMouseEnter={() => setIsShown(false)}
                   // onMouseLeave={() => setIsShown(true)}
                   onMouseOver={(e) => {

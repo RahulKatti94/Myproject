@@ -132,6 +132,8 @@ export const ModalSlider = (props) => {
       <Modal
         className="cross-button h-100"
         show={show}
+        backdrop="static"
+        keyboard={false}
         fullscreen={fullscreen}
         onHide={() => setShow(false)}
       >
