@@ -16,11 +16,12 @@ const Askquestion = ({showQuestionDiv}) => {
             </span>
           </div>
           <form>
-            <div className="p-4">
+            <div className="p-3">
               <textarea
                 required
                 className="text-area"
-                rows="3"
+                rows={3}
+                cols = {58}
                 placeholder="Type here"
               />
             </div>

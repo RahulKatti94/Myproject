@@ -165,7 +165,6 @@ const Responsive = () => {
                                     <del style={{ fontWeight: 500 }}>{itm.discount_price}</del>
                                     : null
                                 }
-                                {/* {sub.discount_price} */}
                               </p>
                             </>
                             : null

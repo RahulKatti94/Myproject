@@ -5,12 +5,11 @@
 }
 
 .topper-div {
-  /* height: 14rem; */
   border: 1px solid black;
-  /* width: calc(100% - 30px); */
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
+  border: none !important;
 }
 
 .header {
@@ -25,7 +24,7 @@
 }
 
 .pre-header {
-  font-size: 18px;
+  font-size: 16px;
   font-family: halvetica;
 }
 
@@ -64,18 +63,22 @@
 /* ShareModal.js file data */
 .share-modal-class{
   position: absolute;
-  top: 84%;
+  bottom: 0;
+  transform: translateY(0);
+  padding-bottom: 15px;
+  border-top-left-radius: 300px !important;
+  border-top-right-radius: 300px;
+  z-index: 12;
+
 }
 
 .share-text {
   font-size: 20px;
   font-family: halvetica calibri, futura;
-  font-style: normal;
+  /* font-style: normal; */
+  font-weight: 100;
 }
 
-.icon-span {
-  padding-right: 10px !important;
-}
 
 .cross-icon {
   color: white;
@@ -88,9 +91,12 @@
   font-size: 16px;
   cursor: pointer;
 }
-.fb-icon {
-  font-size: 30px;
-  color: #3f4b8c;
+.all-icons {
+    /* font-size: 25px; */
+    display: inline-block;
+    width: 40px;
+    margin: 20px 8px 8px;
+    cursor: pointer;
 }
 .hide-text {
   display: none;
@@ -125,30 +131,65 @@
 
 /* CardProduct.js */
 .card-product-main-div {
-  background-color: #32302f !important;
-  opacity: 0.9;
-  color: white;
-  border: 1px solid white !important;
-  border-radius: 12px !important;
+  background: rgb(48 48 48 / 90%) !important;
+    padding: 10px;
+    display: block;
+    z-index: 18;
+    border-top-right-radius: 13px !important;
+    border-top-left-radius: 13px !important;
+    text-align: left;
+    color: #fff!important;
+    width: 100.5%;
+    transition: width 0.5s;
 }
 .image-details {
-  height: 3.5rem;
-  width: 3.5rem;
+  /* height: 3.5rem; */
+  /* width: 3.5rem; */
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 0;
+    margin-right: 3px;
+    cursor: pointer;
 }
 .card-product-para {
-  padding-left: 10px !important;
-  font-size: 15px;
+  /* font-size: 15px; */
+    margin: 0!important;
+    /* height: 20px; */
+    line-height: 20px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    color: #fff!important;
+    padding-left:10px !important;
 }
 
 .icon-close {
-  color: black;
-  height: 16px;
+  /* color: black; */
+  /* height: 16px;
   width: 18px;
   border-radius: 50%;
   background-color: #ffff;
   text-align: center;
-  font-size: 16px;
-  cursor: pointer;
+  font-size: 16px;*/
+  cursor: pointer; 
+  color: #323232;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #fff;
+  font-weight: 400;
+  text-align: center;
+
+}
+
+.card-modal-detail-about{
+    margin-left: 10px !important;
 }
 .card-product-another-button,
 .card-product-button {
@@ -204,7 +245,7 @@
 /* CarToyProduct.js */
 
 .car-toy-product-div{
-  background-color: #32302f !important;
+  background-color: #383736 !important;
   opacity: 0.9;
   color: white;
   }
@@ -213,11 +254,10 @@
 
   .three-dots-main-div-class{
     margin-top: 10px;
-    height: auto;
+    height: 100% !important;
     width: 100%;
-    position: absolute;
-    right: 75px;
-     
+    opacity: 0.9 !important;
+
 
   }
 
@@ -227,15 +267,21 @@
   }
 
   .three-dots-p-tag{
-    font-size: 15px;
+    font-size: 14px;
     font-style: normal;
   }
 
   .three-dots-image-tag{
       height: 1.5rem;
       width: 4rem;
+      border-radius: 4px;
+      padding: 2px !important;
+
+
   } 
   .three-dots-div-tag{
-    margin-top: 250px;
-    margin-bottom: 50px;
+    margin-top: 540px;
   }
+.text-size-threedots{
+  font-size: 17px;
+}

@@ -1,4 +1,4 @@
-// import CardProduct from './CardProduct';
+import CardProduct from './CardProduct';
 // import CarToyProduct from './CarToyProduct';
 import ModalSlider from './ModalSlider';
 //  import ThreeDots from './ThreeDots';
@@ -13,9 +13,7 @@ import Responsive from './Responsive';
 // import SmallCardProduct from './SmallCardProduct';
 // import FetchApi from "./FetchApi";
 // import VideoSection from './VideoSection';
-// 
-
-import Iframe from './Iframe';
+// import Iframe from './Iframe';
 function App() {
 
   // const [modalOpen, setModalOpen] = useState(false);
@@ -23,9 +21,9 @@ function App() {
     <div className="">
       
       <Responsive />   
-      {/* <div  style={{display : "none"}}>    */}
+      <div  style={{display : "none"}}>   
       <ModalSlider  />
-      {/* </div> */}
+      </div>
       {/* <MouseOver /> */}
       {/* <button
         className="openModalBtn"

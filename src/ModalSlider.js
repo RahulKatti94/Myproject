@@ -5,8 +5,8 @@ import "./swirl.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import video from "../src/videos/video.mp4";
-import { Image, Card } from "react-bootstrap";
+// import video from "../src/videos/video.mp4";
+import { Image, Card, ProgressBar } from "react-bootstrap";
 import main from "../src/videos/main.mp4";
 import car from "../src/videos/car.mp4";
 import girl from "../src/videos/girl.mp4";
@@ -18,45 +18,39 @@ import ShareModal from "./ShareModal";
 import ThreeDots from "./ThreeDots";
 import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
-import Iframe from "./Iframe";
 
 export const ModalSlider = (props) => {
   const values = [true];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
-  const {data} = props;
+  const { data } = props;
 
-  console.log("datata", data)
+  console.log("datata", data);
 
-  const handleClick = () => {
+  // const handleClick = () => {
+  //   // alert();
 
-    // alert();
+  //   const closeFrameElement = document.getElementById("iframeTarget");
 
-    const closeFrameElement = document.getElementById("iframeTarget");
-
-    if (closeFrameElement.style.display !== "none") {
-      closeFrameElement.style.display = "none";
-    } else {
-      closeFrameElement.style.display = "block";
-    }
-  }
-
+  //   if (closeFrameElement.style.display !== "none") {
+  //     closeFrameElement.style.display = "none";
+  //   } else {
+  //     closeFrameElement.style.display = "block";
+  //   }
+  // };
 
   useEffect(() => {
     if (data) {
-      setShow(true)
+      setShow(true);
     }
-  }, [props])
+  }, [props]);
   // ------------------------------------- CARD OPENModal ---------------------------------------//
-
-
-
 
   function shareIconModal(props) {
     const sharedIconModal = document.getElementsByClassName(props);
 
-    console.log("Clicked")
+    console.log("Clicked");
 
     Array.prototype.forEach.call(sharedIconModal, function (element) {
       if (element.style.display === "none") {
@@ -66,7 +60,8 @@ export const ModalSlider = (props) => {
       }
     });
   }
-
+ 
+  const [playPouse, setPlayPOuse] = useState(true);
 
   // function carPrizeBlog() {
   //   const carProducts = document.getElementById("cardProductDiv");
@@ -78,7 +73,6 @@ export const ModalSlider = (props) => {
   //   }
   // }
 
-
   // function CarDetailsShare() {
   //   const smallCardprop = document.getElementById("smallCardDiv");
 
@@ -88,7 +82,6 @@ export const ModalSlider = (props) => {
   //     smallCardprop.style.display = "block";
   //   }
   // }
-
 
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
@@ -137,24 +130,28 @@ export const ModalSlider = (props) => {
         fullscreen={fullscreen}
         onHide={() => setShow(false)}
       >
-        <Modal.Body closeButton className="modal-class">
+        <Modal.Body closeButton className="modal-class"
+        >
           <Slider {...settings} className="slider-div">
-            <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+            <div className="position-relative vh-100"
+            >
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
+                    title={"More"}
                     className="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot1")}
                   ></i>
-                  <p className="txt ">
-                    Mini Toy Cars - Mini Hummer | Mini Ferrari for joy
-                  </p>
+                  <p className="txt ">{data?.video_title}</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       id="closeIconId"
-                      onClick={() => { setShow(false); handleClick() }}
+                      onClick={() => setShow(false)}
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
                   </span>
@@ -162,6 +159,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -172,10 +170,14 @@ export const ModalSlider = (props) => {
                   <span
                     className="icon-border"
                     id="closeIconId"
-                    onClick={() => {setShow(false); props.onModalClose()}}
+                    onClick={() => {
+                      setShow(false);
+                      props.onModalClose();
+                    }}
                   >
                     {/* <i className="fa-solid fa-xmark doticons only-icon-details"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -184,10 +186,12 @@ export const ModalSlider = (props) => {
                   </span>
                 </div>
                 <div
-                  className="three-dots-main-div-class three-rated-dot1"
+                  className="three-dots-main-div-class-element three-rated-dot1"
                   style={{ display: "none" }}
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot1")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot1")}
+                  />
                 </div>
 
                 <video
@@ -199,22 +203,60 @@ export const ModalSlider = (props) => {
                   loading="lazy"
                   style={clickModal}
                 ></video>
+                
+                <div className="modal-button modal_btn">
+                {playPouse &&
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
 
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                   }
+                </div>
+                <div className="modal-button modal_btn" style={{display : "none"}} >
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
 
-
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
 
                 <div
                   className="Small-card-product-component target-image1"
                   style={{ display: "none" }}
                 >
-                  <SmallCardProduct CarDetailsShare={() => shareIconModal("target-image1")} />
+                  <SmallCardProduct
+                    CarDetailsShare={() => shareIconModal("target-image1")}
+                  />
                 </div>
                 <div
                   className="Component-position target-code"
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button1"
@@ -237,15 +279,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -273,6 +320,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     className="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot2")}
@@ -280,6 +328,7 @@ export const ModalSlider = (props) => {
                   <p className="txt">Wooden Christmas Toys</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -287,6 +336,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -301,6 +351,7 @@ export const ModalSlider = (props) => {
                   >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -310,10 +361,12 @@ export const ModalSlider = (props) => {
                 </div>
 
                 <div
-                  className="three-dots-main-div-class three-rated-dot2"
+                  className="three-dots-main-div-class-element three-rated-dot2"
                   style={{ display: "none" }}
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot2")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot2")}
+                  />
                 </div>
                 <video
                   className=" slider-video vidio"
@@ -324,12 +377,49 @@ export const ModalSlider = (props) => {
                   loading="lazy"
                   style={clickModal}
                 ></video>
+
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
                 <div
                   className="car-toy-product-component target-image2"
                   id="cardProductDiv"
-                  style={{ display: "none" }}
+                  // style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image2")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image2")}
+                  />
                 </div>
 
                 <div
@@ -337,14 +427,18 @@ export const ModalSlider = (props) => {
                   id="displayDivIdTwo"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code2")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code2")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button2"
                   id="share-modal-id"
                   style={{ display: "none" }}
                 >
-                  <ShareModal showShareModal={() => shareIconModal("Toggle-Button2")} />
+                  <ShareModal
+                    showShareModal={() => shareIconModal("Toggle-Button2")}
+                  />
                 </div>
                 <Card.Body className="modalcard">
                   <div className="d-flex icon-div">
@@ -357,6 +451,7 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
@@ -369,6 +464,7 @@ export const ModalSlider = (props) => {
                     >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Questions"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -402,6 +498,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     class="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot3")}
@@ -410,6 +507,7 @@ export const ModalSlider = (props) => {
                   <p className="txt ">Mini BMW Convertible</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -417,6 +515,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -431,6 +530,7 @@ export const ModalSlider = (props) => {
                   >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -439,10 +539,12 @@ export const ModalSlider = (props) => {
                   </span>
                 </div>
                 <div
-                  className="three-dots-main-div-class three-rated-dot3"
+                  className="three-dots-main-div-class-element three-rated-dot3"
                   style={{ display: "none" }}
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot3")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot3")}
+                  />
                 </div>
                 <video
                   className=" slider-video vidio"
@@ -453,12 +555,49 @@ export const ModalSlider = (props) => {
                   loading="lazy"
                   style={clickModal}
                 ></video>
+
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
                 <div
                   className="car-toy-product-component target-image3"
                   id="cardProductDiv"
                   style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image3")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image3")}
+                  />
                 </div>
 
                 <div
@@ -466,14 +605,18 @@ export const ModalSlider = (props) => {
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code3")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code3")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button3"
                   id="share-modal-id"
                   style={{ display: "none" }}
                 >
-                  <ShareModal showShareModal={() => shareIconModal("Toggle-Button3")} />
+                  <ShareModal
+                    showShareModal={() => shareIconModal("Toggle-Button3")}
+                  />
                 </div>
                 <Card.Body className="modalcard">
                   <div className="d-flex icon-div">
@@ -486,15 +629,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code3")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code3")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -526,6 +674,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     class="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot4")}
@@ -533,6 +682,7 @@ export const ModalSlider = (props) => {
                   <p className="txt">Little Rabbit</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -540,6 +690,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -547,11 +698,14 @@ export const ModalSlider = (props) => {
                       width=""
                     ></img>
                   </span>
-                  <span className="icon-border"
+                  <span
+                    className="icon-border"
                     id="closeIconId"
-                    onClick={() => setShow(false)}>
+                    onClick={() => setShow(false)}
+                  >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -561,10 +715,12 @@ export const ModalSlider = (props) => {
                 </div>
 
                 <div
-                  className="three-dots-main-div-class three-rated-dot4"
+                  className="three-dots-main-div-class-element three-rated-dot4"
                   style={{ display: "none" }}
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot4")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot4")}
+                  />
                 </div>
 
                 <video
@@ -577,12 +733,49 @@ export const ModalSlider = (props) => {
                   style={clickModal}
                 ></video>
 
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
+
                 <div
                   className="car-toy-product-component target-image4"
                   id="cardProductDiv"
                   style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image4")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image4")}
+                  />
                 </div>
 
                 <div
@@ -590,7 +783,9 @@ export const ModalSlider = (props) => {
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code4")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code4")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button4"
@@ -613,15 +808,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code4")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code4")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -652,6 +852,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     class="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot5")}
@@ -659,6 +860,7 @@ export const ModalSlider = (props) => {
                   <p className="txt">Doll House</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -666,6 +868,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -680,6 +883,7 @@ export const ModalSlider = (props) => {
                   >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -689,11 +893,13 @@ export const ModalSlider = (props) => {
                 </div>
 
                 <div
-                  className="three-dots-main-div-class three-rated-dot5"
+                  className="three-dots-main-div-class-element three-rated-dot5"
                   style={{ display: "none" }}
                   id="swirlDetailsDiv"
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot5")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot5")}
+                  />
                 </div>
 
                 <video
@@ -706,12 +912,49 @@ export const ModalSlider = (props) => {
                   style={clickModal}
                 ></video>
 
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
+
                 <div
                   className="car-toy-product-component target-image5"
                   id="cardProductDiv"
                   style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image5")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image5")}
+                  />
                 </div>
 
                 <div
@@ -719,14 +962,18 @@ export const ModalSlider = (props) => {
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code5")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code5")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button5"
                   id="share-modal-id"
                   style={{ display: "none" }}
                 >
-                  <ShareModal showShareModal={() => shareIconModal("Toggle-Button5")} />
+                  <ShareModal
+                    showShareModal={() => shareIconModal("Toggle-Button5")}
+                  />
                 </div>
 
                 <Card.Body className="modalcard">
@@ -740,15 +987,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code5")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code5")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -778,6 +1030,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     class="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot6")}
@@ -785,6 +1038,7 @@ export const ModalSlider = (props) => {
                   <p className="txt">Cute Bunny</p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -792,6 +1046,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -806,6 +1061,7 @@ export const ModalSlider = (props) => {
                   >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -815,11 +1071,13 @@ export const ModalSlider = (props) => {
                 </div>
 
                 <div
-                  className="three-dots-main-div-class three-rated-dot6"
+                  className="three-dots-main-div-class-element three-rated-dot6"
                   style={{ display: "none" }}
                   id="swirlDetailsDiv"
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot6")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot6")}
+                  />
                 </div>
                 <video
                   className=" slider-video vidio"
@@ -831,12 +1089,49 @@ export const ModalSlider = (props) => {
                   style={clickModal}
                 ></video>
 
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
+
                 <div
                   className="car-toy-product-component target-image6"
                   id="cardProductDiv"
                   style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image6")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image6")}
+                  />
                 </div>
 
                 <div
@@ -844,14 +1139,18 @@ export const ModalSlider = (props) => {
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code6")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code6")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button6"
                   id="share-modal-id"
                   style={{ display: "none" }}
                 >
-                  <ShareModal showShareModal={() => shareIconModal("Toggle-Button6")} />
+                  <ShareModal
+                    showShareModal={() => shareIconModal("Toggle-Button6")}
+                  />
                 </div>
                 <Card.Body className="modalcard">
                   <div className="d-flex icon-div">
@@ -864,15 +1163,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code6")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code6")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
@@ -902,6 +1206,7 @@ export const ModalSlider = (props) => {
               <Card className="modal-background-color">
                 <div className="card-header">
                   <i
+                    title={"More"}
                     class="fa fa-ellipsis-v text-light dot-icon"
                     aria-hidden="true"
                     onClick={() => shareIconModal("three-rated-dot7")}
@@ -909,6 +1214,7 @@ export const ModalSlider = (props) => {
                   <p className="txt">Brown Teddy </p>
                   <span className="icon-border">
                     <Image
+                      title={"PIP Mode"}
                       className="modal-first-para"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
                     />
@@ -916,6 +1222,7 @@ export const ModalSlider = (props) => {
                   <span className="icon-border">
                     {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
+                      title={"Mute/Unmute"}
                       className="doticons"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
                       alt="Share icon"
@@ -930,6 +1237,7 @@ export const ModalSlider = (props) => {
                   >
                     {/* <i className="fa-solid fa-xmark doticons"></i> */}
                     <label
+                      title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
                     >
@@ -938,11 +1246,13 @@ export const ModalSlider = (props) => {
                   </span>
                 </div>
                 <div
-                  className="three-dots-main-div-class three-rated-dot7"
+                  className="three-dots-main-div-class-element three-rated-dot7"
                   style={{ display: "none" }}
                   id="swirlDetailsDiv"
                 >
-                  <ThreeDots iconVisitModal={() => shareIconModal("three-rated-dot7")} />
+                  <ThreeDots
+                    iconVisitModal={() => shareIconModal("three-rated-dot7")}
+                  />
                 </div>
 
                 <video
@@ -955,12 +1265,49 @@ export const ModalSlider = (props) => {
                   style={clickModal}
                 ></video>
 
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <div className="modal-button modal_btn">
+                  <button className="me-2 mb-2 button-border-icon">
+                    <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                    />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                </div>
+                <ProgressBar
+                  className="p-bar"
+                  now="30"
+                  style={{ width: "100%" }}
+                  variant="secondary"
+                />
+
                 <div
                   className="car-toy-product-component target-image7"
                   id="cardProductDiv"
                   style={{ display: "none" }}
                 >
-                  <CardProduct carPrizeBlog={() => shareIconModal("target-image7")} />
+                  <CardProduct
+                    carPrizeBlog={() => shareIconModal("target-image7")}
+                  />
                 </div>
 
                 <div
@@ -968,14 +1315,18 @@ export const ModalSlider = (props) => {
                   id="displayDivId"
                   style={{ display: "none" }}
                 >
-                  <Askquestion showQuestionDiv={() => shareIconModal("target-code7")} />
+                  <Askquestion
+                    showQuestionDiv={() => shareIconModal("target-code7")}
+                  />
                 </div>
                 <div
                   className="Toggle-Button7"
                   id="share-modal-id"
                   style={{ display: "none" }}
                 >
-                  <ShareModal showShareModal={() => shareIconModal("Toggle-Button7")} />
+                  <ShareModal
+                    showShareModal={() => shareIconModal("Toggle-Button7")}
+                  />
                 </div>
 
                 <Card.Body className="modalcard">
@@ -989,15 +1340,20 @@ export const ModalSlider = (props) => {
                         aria-hidden="true"
                       ></i> */}
                       <img
+                        title={"Share"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/share.svg"
                         alt="Share icon"
                         height=""
                         width=""
                       ></img>
                     </span>
-                    <span className="footer-border" onClick={() => shareIconModal("target-code7")}>
+                    <span
+                      className="footer-border"
+                      onClick={() => shareIconModal("target-code7")}
+                    >
                       {/* <i className="fa-regular fa-circle-question footer-icon"></i> */}
                       <img
+                        title={"Ask Question"}
                         src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/ask-question.svg"
                         alt="Ask Question icon"
                         height=""
