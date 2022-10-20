@@ -25,7 +25,7 @@ export const ModalSlider = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
-  const {data} = props;
+  const { data } = props;
 
   console.log("datata", data)
 
@@ -137,8 +137,8 @@ export const ModalSlider = (props) => {
         fullscreen={fullscreen}
         onHide={() => setShow(false)}
       >
-        <Modal.Body closeButton className="modal-class">
-          <Slider {...settings} className="slider-div">
+        <Modal.Body closeButton className="modal-class main-div">
+          <Slider {...settings} className="slider-div transparent-bg">
             <div className="position-relative vh-100">
               <Card className="modal-background-color">
                 <div className="card-header">
@@ -172,7 +172,7 @@ export const ModalSlider = (props) => {
                   <span
                     className="icon-border"
                     id="closeIconId"
-                    onClick={() => {setShow(false); props.onModalClose()}}
+                    onClick={() => { setShow(false); props.onModalClose() }}
                   >
                     {/* <i className="fa-solid fa-xmark doticons only-icon-details"></i> */}
                     <label
@@ -255,8 +255,10 @@ export const ModalSlider = (props) => {
                   </div>
                   <div className="d-flex">
                     <Image
+                      // style={{ display: "block" }}
                       className="image-border"
                       onClick={() => shareIconModal("target-image1")}
+                      // showShareModal11={() => shareIconModal("target-image1")}
                       src="/images/car.jpg"
                     />
                   </div>

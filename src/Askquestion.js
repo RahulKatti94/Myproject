@@ -16,7 +16,7 @@ const Askquestion = ({showQuestionDiv}) => {
             </span>
           </div>
           <form>
-            <div className="p-4">
+            <div className="p-4" style={{textAlign:'center'}}>
               <textarea
                 required
                 className="text-area"

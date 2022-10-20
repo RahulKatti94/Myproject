@@ -62,9 +62,10 @@
 }
 
 /* ShareModal.js file data */
-.share-modal-class{
+.share-modal-class {
   position: absolute;
   top: 84%;
+  z-index: 1;
 }
 
 .share-text {
@@ -88,17 +89,21 @@
   font-size: 16px;
   cursor: pointer;
 }
+
 .fb-icon {
   font-size: 30px;
   color: #3f4b8c;
 }
+
 .hide-text {
   display: none;
 }
+
 .fb-icon :hover {
   color: white !important;
   background-color: white !important;
 }
+
 .twitter-icon {
   height: 31px;
   width: 33px;
@@ -107,6 +112,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .icon-list,
 .icon-link {
   color: white;
@@ -131,10 +137,12 @@
   border: 1px solid white !important;
   border-radius: 12px !important;
 }
+
 .image-details {
   height: 3.5rem;
   width: 3.5rem;
 }
+
 .card-product-para {
   padding-left: 10px !important;
   font-size: 15px;
@@ -150,6 +158,7 @@
   font-size: 16px;
   cursor: pointer;
 }
+
 .card-product-another-button,
 .card-product-button {
   background-color: transparent;
@@ -164,6 +173,7 @@
   align-items: center;
   padding: 0 6px !important;
 }
+
 .card-product-button {
   background-color: #684bc4;
 }
@@ -174,8 +184,9 @@
   height: 3.5rem;
   width: 3.5rem;
 }
-.remove-icon{
-  
+
+.remove-icon {
+
   color: black;
   height: 16px;
   width: 18px;
@@ -185,7 +196,8 @@
   font-size: 16px;
   cursor: pointer;
 }
-.small-card-container{
+
+.small-card-container {
   background-color: #3a3938 !important;
   border-radius: 15px !important;
   color: white;
@@ -193,49 +205,65 @@
 }
 
 
-.small-card-container-body{
+.small-card-container-body {
   border: 0 !important;
   border-bottom: 2px solid white !important;
 }
-.small-card-arrow{
+
+.small-card-arrow {
   cursor: pointer;
 }
 
 /* CarToyProduct.js */
 
-.car-toy-product-div{
+.car-toy-product-div {
   background-color: #32302f !important;
   opacity: 0.9;
   color: white;
-  }
+}
 
-  /* ThreeDots */
+/* ThreeDots */
 
-  .three-dots-main-div-class{
-    margin-top: 10px;
-    height: auto;
-    width: 100%;
-    position: absolute;
-    right: 75px;
-     
+.three-dots-main-div-class {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  right: 43px;
 
-  }
 
-  .ollicraft-modal{
-    height: 6.5rem;
-    width: 6.5rem;
-  }
+}
 
-  .three-dots-p-tag{
-    font-size: 15px;
-    font-style: normal;
-  }
+.bgWidth {
+  width: 100% !important;
+}
 
-  .three-dots-image-tag{
-      height: 1.5rem;
-      width: 4rem;
-  } 
-  .three-dots-div-tag{
-    margin-top: 250px;
-    margin-bottom: 50px;
-  }
+.ollicraft-modal {
+  height: 6.5rem;
+  width: 6.5rem;
+}
+
+.three-dots-p-tag {
+  font-size: 15px;
+  font-style: normal;
+}
+
+.three-dots-image-tag {
+  height: 1.5rem;
+  width: 4rem;
+}
+
+.three-dots-div-tag {
+  margin-top: 250px;
+  margin-bottom: 50px;
+}
+
+
+.transparent-bg{
+	background: rgb(0,0,0,.85);
+    padding: 20px;
+}
+.main-div{
+	background-image: url(../public/images/myProjectBgFinalImg.jpg);
+    background-attachment: scroll;
+    padding: 20px;  
+}
