@@ -63,18 +63,8 @@
 /* ShareModal.js file data */
 .share-modal-class {
   position: absolute;
-<<<<<<< HEAD
-  bottom: 0;
-  transform: translateY(0);
-  padding-bottom: 15px;
-  border-top-left-radius: 300px !important;
-  border-top-right-radius: 300px;
-  z-index: 12;
-
-=======
   top: 84%;
   z-index: 1;
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
 }
 
 .share-text {
@@ -96,19 +86,10 @@
   font-size: 16px;
   cursor: pointer;
 }
-<<<<<<< HEAD
-.all-icons {
-    /* font-size: 25px; */
-    display: inline-block;
-    width: 40px;
-    margin: 20px 8px 8px;
-    cursor: pointer;
-=======
 
 .fb-icon {
   font-size: 30px;
   color: #3f4b8c;
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
 }
 
 .hide-text {
@@ -266,58 +247,20 @@
 }
 
 /* CarToyProduct.js */
-
-<<<<<<< HEAD
-.car-toy-product-div{
-  background-color: #383736 !important;
-=======
 .car-toy-product-div {
   background-color: #32302f !important;
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
   opacity: 0.9;
   color: white;
 }
 
 /* ThreeDots */
-
-<<<<<<< HEAD
-  .three-dots-main-div-class{
-    margin-top: 10px;
-    height: 100% !important;
-    width: 100%;
-    opacity: 0.9 !important;
-
-=======
 .three-dots-main-div-class {
   height: auto;
   width: 100%;
   position: absolute;
   right: 43px;
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
-
 
 }
-
-<<<<<<< HEAD
-  .three-dots-p-tag{
-    font-size: 14px;
-    font-style: normal;
-  }
-
-  .three-dots-image-tag{
-      height: 1.5rem;
-      width: 4rem;
-      border-radius: 4px;
-      padding: 2px !important;
-
-
-  } 
-  .three-dots-div-tag{
-    margin-top: 540px;
-  }
-.text-size-threedots{
-  font-size: 17px;
-=======
 .bgWidth {
   width: 100% !important;
 }
@@ -351,5 +294,4 @@
 	background-image: url(../public/images/myProjectBgFinalImg.jpg);
     background-attachment: scroll;
     padding: 20px;  
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
 }

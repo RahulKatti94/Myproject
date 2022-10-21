@@ -57,7 +57,7 @@ export const ModalSlider = (props) => {
         element.style.display = "block";
       } else {
         element.style.display = "none";
-      }
+      } 
     });
   }
  
@@ -130,21 +130,10 @@ export const ModalSlider = (props) => {
         fullscreen={fullscreen}
         onHide={() => setShow(false)}
       >
-<<<<<<< HEAD
-        <Modal.Body closeButton className="modal-class"
-        >
-          <Slider {...settings} className="slider-div">
-            <div className="position-relative vh-100"
-            >
-              <Card className="modal-background-color"
-               onMouseEnter={() => setPlayPOuse(true)}
-               onMouseLeave={() => setPlayPOuse(false)}>
-=======
-        <Modal.Body closeButton className="modal-class main-div">
-          <Slider {...settings} className="slider-div transparent-bg">
+        <Modal.Body closeButton className="modal-class main-div" id="hello-world">
+          <Slider {...settings} className="slider-div transparent-bg  ">
             <div className="position-relative vh-100">
               <Card className="modal-background-color">
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -177,21 +166,13 @@ export const ModalSlider = (props) => {
                   <span
                     className="icon-border"
                     id="closeIconId"
-<<<<<<< HEAD
-                    onClick={() => {
-                      setShow(false);
-                      props.onModalClose();
-                    }}
-=======
-                    onClick={() => { setShow(false); props.onModalClose() }}
->>>>>>> a77b14688c636c2cc1283294f92f34e16ba42db0
-                  >
+                    onClick={() => { setShow(false); props.onModalClose() }}>
                     {/* <i className="fa-solid fa-xmark doticons only-icon-details"></i> */}
                     <label
                       title={"Close"}
                       className="close-modal"
                       style={{ fontfamily: "arial" }}
-                    >
+                    > 
                       ×
                     </label>
                   </span>
