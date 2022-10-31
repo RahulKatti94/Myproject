@@ -16,12 +16,12 @@ const Askquestion = ({showQuestionDiv}) => {
             </span>
           </div>
           <form>
-            <div className="p-4" style={{textAlign:'center'}}>
+            <div className="p-2" style={{textAlign:'center'}}>
               <textarea
                 required
                 className="text-area"
-                rows={3}
-                cols = {35}
+                rows={5}
+                cols = {57}
                 placeholder="Type here"
               />
             </div>

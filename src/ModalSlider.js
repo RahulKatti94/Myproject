@@ -45,7 +45,6 @@ export const ModalSlider = (props) => {
       setShow(true);
     }
   }, [props]);
-  // ------------------------------------- CARD OPENModal ---------------------------------------//
 
   function shareIconModal(props) {
     const sharedIconModal = document.getElementsByClassName(props);
@@ -70,16 +69,6 @@ export const ModalSlider = (props) => {
   //     carProducts.style.display = "none";
   //   } else {
   //     carProducts.style.display = "block";
-  //   }
-  // }
-
-  // function CarDetailsShare() {
-  //   const smallCardprop = document.getElementById("smallCardDiv");
-
-  //   if (smallCardprop.style.display !== "none") {
-  //     smallCardprop.style.display = "none";
-  //   } else {
-  //     smallCardprop.style.display = "block";
   //   }
   // }
 
@@ -238,7 +227,7 @@ export const ModalSlider = (props) => {
                   style={{ display: "none" }}
                 >
                   <SmallCardProduct
-                    CarDetailsShare={() => shareIconModal("target-image1")}
+                    CarDetailsShare = {() => shareIconModal("target-image1")}
                   />
                 </div>
                 <div
@@ -409,7 +398,7 @@ export const ModalSlider = (props) => {
                 <div
                   className="car-toy-product-component target-image2"
                   id="cardProductDiv"
-                  // style={{ display: "none" }}
+                  style={{ display: "none" }}
                 >
                   <CardProduct
                     carPrizeBlog={() => shareIconModal("target-image2")}

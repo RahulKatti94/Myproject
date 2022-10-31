@@ -63,8 +63,13 @@
 /* ShareModal.js file data */
 .share-modal-class {
   position: absolute;
-  top: 84%;
-  z-index: 1;
+  bottom: 0;
+  z-index: 5;
+  background: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  width: 100%;
+  padding-bottom: 15px;
 }
 
 .share-text {
@@ -72,11 +77,13 @@
   font-family: halvetica calibri, futura;
   /* font-style: normal; */
   font-weight: 100;
+  margin: 0!important;
+  margin-top: 10px!important;
 }
 
 
 .cross-icon {
-  color: white;
+  color: white !important;
   height: 17px;
   width: 18px;
   border-radius: 50%;
@@ -87,43 +94,11 @@
   cursor: pointer;
 }
 
-.fb-icon {
-  font-size: 30px;
-  color: #3f4b8c;
-}
-
-.hide-text {
-  display: none;
-}
-
-.fb-icon :hover {
-  color: white !important;
-  background-color: white !important;
-}
-
-.twitter-icon {
-  height: 31px;
-  width: 33px;
-  border-radius: 50%;
-  background-color: #549ff1;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-list,
-.icon-link {
-  color: white;
-  font-size: 20px;
-}
-
-.link-icon {
-  height: 31px;
-  width: 33px;
-  border-radius: 50%;
-  background-color: #404040;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.fb-icon , .twitter-icon , .icon-link
+{
+    width: 40px;
+    margin: 20px 8px 8px;
+    cursor: pointer;
 }
 
 /* CardProduct.js */
@@ -141,8 +116,6 @@
 }
 
 .image-details {
-  /* height: 3.5rem; */
-  /* width: 3.5rem; */
     height: 40px;
     width: 40px;
     object-fit: cover;
@@ -255,33 +228,36 @@
 
 /* ThreeDots */
 .three-dots-main-div-class {
-  height: auto;
-  width: 100%;
+  width: 100% !important;
+  height: fit-content;
   position: absolute;
   right: 43px;
 
 }
-.bgWidth {
-  width: 100% !important;
-}
 
 .ollicraft-modal {
-  height: 6.5rem;
-  width: 6.5rem;
+  width: 100px!important;
+    display: inline-block!important;
 }
 
 .three-dots-p-tag {
-  font-size: 15px;
-  font-style: normal;
+  color: #fff!important;
+  margin: 0!important;
+  margin-top: 10px!important;
+  font-size: 14px;
+  text-align: end;
 }
 
 .three-dots-image-tag {
-  height: 1.5rem;
-  width: 4rem;
+    width: 65px;
+    background: #fff;
+    padding: 4px;
+    border-radius: 4px;
+    display: inline-block!important;
 }
 
 .three-dots-div-tag {
-  margin-top: 250px;
+  margin-top: 540px;
   margin-bottom: 50px;
 }
 
