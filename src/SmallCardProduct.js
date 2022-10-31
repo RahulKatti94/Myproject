@@ -16,7 +16,8 @@ const SmallCardProduct = ({showShareModal11}) => {
             </div>
             <div className="col-6 text-end">
               <i className="fa-solid fa-xmark remove-icon"
-              onClick={CarDetailsShare}></i>
+              // onClick={CarDetailsShare}
+              ></i>
             </div>
           </div>
         </Card.Body>

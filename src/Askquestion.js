@@ -21,7 +21,7 @@ const Askquestion = ({showQuestionDiv}) => {
                 required
                 className="text-area"
                 rows={3}
-                cols = {58}
+                cols = {35}
                 placeholder="Type here"
               />
             </div>
