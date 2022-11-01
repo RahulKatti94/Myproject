@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef } from "react";
 import Slider from "react-slick";
 import Modal from "react-bootstrap/Modal";
 import "./swirl.css";
@@ -24,9 +24,9 @@ export const ModalSlider = (props) => {
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
 
+
   const { data } = props;
 
-  console.log("datata", data);
 
   // const handleClick = () => {
   //   // alert();
@@ -45,6 +45,7 @@ export const ModalSlider = (props) => {
       setShow(true);
     }
   }, [props]);
+  console.log(data);
 
   function shareIconModal(props) {
     const sharedIconModal = document.getElementsByClassName(props);
@@ -60,7 +61,7 @@ export const ModalSlider = (props) => {
     });
   }
  
-  const [playPouse, setPlayPOuse] = useState(true);
+  const [playPouse, setPlayPOuse] = useState();
 
   // function carPrizeBlog() {
   //   const carProducts = document.getElementById("cardProductDiv");
@@ -122,7 +123,9 @@ export const ModalSlider = (props) => {
         <Modal.Body closeButton className="modal-class main-div" id="hello-world">
           <Slider {...settings} className="slider-div transparent-bg  ">
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+              onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -142,7 +145,6 @@ export const ModalSlider = (props) => {
                   </span>
 
                   <span className="icon-border">
-                    {/* <i className="fas fa-volume-mute doticons"></i> */}
                     <img
                       title={"Mute/Unmute"}
                       className="doticons"
@@ -183,25 +185,14 @@ export const ModalSlider = (props) => {
                   mute
                   loading="lazy"
                   style={clickModal}
+                 
+                  
                 ></video>
                 
-                <div className="modal-button modal_btn">
+                <div className="modal-button modal_btn"
+                //  onClick={(event) => event.target.play()}
+                 onClick={(event) => event.target.pause()}>
                 {playPouse &&
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                   }
-                </div>
-                <div className="modal-button modal_btn" style={{display : "none"}} >
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
@@ -211,6 +202,23 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                   }
+                </div>
+                <div className="modal-button modal_btn" 
+                style={{display : "none"}}
+                 >
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -283,10 +291,10 @@ export const ModalSlider = (props) => {
                   </div>
                   <div className="d-flex">
                     <Image
-                      // style={{ display: "block" }}
+                      style={{ display: "block" }}
                       className="image-border"
                       onClick={() => shareIconModal("target-image1")}
-                      // showShareModal11={() => shareIconModal("target-image1")}
+                      showShareModal11={() => shareIconModal("target-image1")}
                       src="/images/car.jpg"
                     />
                   </div>
@@ -300,7 +308,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -362,20 +372,7 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
@@ -385,6 +382,22 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+                    
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                    }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}>
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -478,7 +491,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -540,20 +555,7 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
@@ -563,6 +565,22 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                    }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}>
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -654,7 +672,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -717,22 +737,9 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
+                   <img
                       title={"Play/Pause"}
                       className="pause-play-icon"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
@@ -740,6 +747,22 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                    }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}>
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -832,7 +855,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -896,22 +921,9 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
+                   <img
                       title={"Play/Pause"}
                       className="pause-play-icon"
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
@@ -919,6 +931,22 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                    }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}>
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -1010,7 +1038,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -1073,20 +1103,7 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
@@ -1096,6 +1113,22 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                    }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}>
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
@@ -1186,7 +1219,9 @@ export const ModalSlider = (props) => {
             </div>
 
             <div className="position-relative vh-100">
-              <Card className="modal-background-color">
+              <Card className="modal-background-color"
+               onMouseEnter={() => setPlayPOuse(true)}
+               onMouseLeave={() => setPlayPOuse(false)}>
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -1249,20 +1284,7 @@ export const ModalSlider = (props) => {
                 ></video>
 
                 <div className="modal-button modal_btn">
-                  <button className="me-2 mb-2 button-border-icon">
-                    <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                    />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <div className="modal-button modal_btn">
+                {playPouse &&
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
@@ -1272,6 +1294,24 @@ export const ModalSlider = (props) => {
                       height=""
                       width=""
                     />
+                    {/* <i className="fa fa-play pause-play-icon"></i> */}
+                  </button>
+                  }
+                </div>
+                <div className="modal-button modal_btn"
+                style={{display : "none"}}
+                >
+                  <button className="me-2 mb-2 button-border-icon">
+                  <img
+                      title={"Play/Pause"}
+                      className="pause-play-icon"
+                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      alt="Play/Pause icon"
+                      height=""
+                      width=""
+                      />
+
+
 
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>

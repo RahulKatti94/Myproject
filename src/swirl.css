@@ -125,6 +125,14 @@
   height: 100% !important;
   margin-left: -20px !important;
 }
+
+.main-div{
+	background-image: url(../public/images/myProjectBgFinalImg.jpg);
+    background-attachment: scroll;
+    padding: 20px;  
+}
+
+
 .button-border {
   background: rgb(0 0 0 / 60%);
   box-shadow: 0 5px 16px 0 rgb(0 0 0 / 10%);
@@ -271,10 +279,6 @@
   cursor: pointer;
 }
 
-
-/* .icon-div{
-  margin-top: 10px !important;
-} */
 .footer-border {
   display: flex;
   height: 1.8rem;

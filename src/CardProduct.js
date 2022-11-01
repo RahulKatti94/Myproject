@@ -32,22 +32,23 @@ const CardProduct = ({carPrizeBlog}) => {
             </span>
           </div>
         </div>
-        <div>
+        <div> 
           <h5 className="m-0 p-1">Description</h5>
           <p className="mt-0 p-1">Wooden Christmas Toys</p>
         </div>
-        <div className="row d-flex">
-          <div className="col-3"></div>
-          <div className="col-6">
-            <button className="card-product-another-button justify-content-start" >Add To Cart</button>
-            <button className="card-product-button justify-content-end">Show Me</button>
-
-          </div>
-          <div className="col-3"></div>
+        <div className="row button-class-div">
+          <div className="col-5"></div>
+          <div className="col-3">
+            <button className="card-product-another-button" >Add To Cart</button>
+            </div>
+            <div className="col-3">
+            <button className="card-product-button">Show Me</button>
+            </div>
+              <div className="col-1"></div>
         </div>
       </div>
     </div>
   );
 };
 
-export default CardProduct;
+export default CardProduct

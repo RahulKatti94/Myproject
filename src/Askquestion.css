@@ -140,13 +140,6 @@
 }
 
 .icon-close {
-  /* color: black; */
-  /* height: 16px;
-  width: 18px;
-  border-radius: 50%;
-  background-color: #ffff;
-  text-align: center;
-  font-size: 16px;*/
   cursor: pointer; 
   color: #323232;
   font-size: 18px;
@@ -164,10 +157,12 @@
     margin-left: 10px !important;
 }
 
-.card-product-another-button,
+
+
+ .card-product-another-button,
 .card-product-button {
   background-color: transparent;
-  color: #eeeeee !important;
+  color: rgb(255, 255, 255) !important;
   border: 1px solid #684bc4;
   border-radius: 16px;
   font-weight: 500;
@@ -177,11 +172,20 @@
   font-style: normal;
   align-items: center;
   padding: 0 6px !important;
-}
+} 
 
 .card-product-button {
   background-color: #684bc4;
 }
+
+.button-class-div{
+  padding-right: 50px!important;
+  display: flex;
+  padding-right: 114px !important;
+  margin-bottom: 9px;
+}
+
+
 
 /* SmallCardProduct */
 
@@ -221,8 +225,8 @@
 
 /* CarToyProduct.js */
 .car-toy-product-div {
-  background-color: #32302f !important;
-  opacity: 0.9;
+  background-color: #383736 !important;
+  /* opacity: 0.9; */
   color: white;
 }
 
@@ -266,8 +270,4 @@
 	background: rgb(0,0,0,.85);
     padding: 20px;
 }
-.main-div{
-	background-image: url(../public/images/myProjectBgFinalImg.jpg);
-    background-attachment: scroll;
-    padding: 20px;  
-}
+

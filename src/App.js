@@ -10,7 +10,7 @@ import Responsive from './Responsive';
 // import UseEffectAPi from './UseEffectAPi';
 // import Askquestion from "./Askquestion";
 // import ShareModal from './ShareModal';
-// import SmallCardProduct from './SmallCardProduct';
+import SmallCardProduct from './SmallCardProduct';
 // import FetchApi from "./FetchApi";
 // import VideoSection from './VideoSection';
 // import Iframe from './Iframe';
@@ -21,9 +21,10 @@ function App() {
     <div className="">
       
       <Responsive />   
-      {/* <div  style={{display : "none"}}>    */}
+      <div  style={{display : "none"}}>  
+      {/* <SmallCardProduct /> */}
       <ModalSlider  />
-      {/* </div> */}
+      </div>
       {/* <MouseOver /> */}
       {/* <button
         className="openModalBtn"
@@ -41,7 +42,7 @@ function App() {
       {/* <Askquestion /> */}
        {/* <ShareModal /> */}
        {/* <CardProduct /> */}
-       {/* <SmallCardProduct /> */}
+      
        {/* <CarToyProduct /> */}
        {/* <ThreeDots /> */}
        {/* <UseEffectAPi /> */}

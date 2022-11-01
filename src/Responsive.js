@@ -77,7 +77,6 @@ const Responsive = () => {
   };
 
   const shoot = (event) => {
-    // document.querySelector('#firstComponent').click();
     setshowModalSlider(true);
     setselectedEvent(event)
   }
