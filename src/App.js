@@ -42,7 +42,7 @@ function App() {
       {/* <Askquestion /> */}
        {/* <ShareModal /> */}
        {/* <CardProduct /> */}
-      
+        {/* <SmallCardProduct /> */}
        {/* <CarToyProduct /> */}
        {/* <ThreeDots /> */}
        {/* <UseEffectAPi /> */}

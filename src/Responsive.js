@@ -16,7 +16,7 @@ const Responsive = () => {
   const [style, setStyle] = useState({ display: 'block' });
   const [mouseHoverElementIndex, setmouseHoverElementIndex] = useState();
   const [showModalSlider, setshowModalSlider] = useState(false);
-  const [selectedEvent, setselectedEvent] = useState();
+  const [selectedItemIndex, setSelectedItemIndex] = useState();
   // const [isgiven, setIsgiven] = useState(true);
   // const [isstate, setIsstate] = useState(true);
   // const [isover, setIsover] =   useState(true);
@@ -76,9 +76,9 @@ const Responsive = () => {
     objectFit: "cover",
   };
 
-  const shoot = (event) => {
+  const shoot = (index) => {
     setshowModalSlider(true);
-    setselectedEvent(event)
+    setSelectedItemIndex(index)
   }
 
 
@@ -93,7 +93,7 @@ const Responsive = () => {
             {
               data.swilrs?.video?.map((item, index) => {
                 return (<div>   <Card
-                  onClick={() => shoot(item)}
+                  onClick={() => shoot(index)}
                   className="border-0 shabaash"
                   dataBackdrop="static" dataKeyboard="false"
                   // onMouseEnter={() => setIsShown(false)}
@@ -187,10 +187,11 @@ const Responsive = () => {
             
           </Slider>
           :
-          <ModalSlider 
-          data={selectedEvent} onModalClose={() => setshowModalSlider(false)}
-          >
-          </ModalSlider>
+          <ModalSlider
+            selectedItemIndex={selectedItemIndex}
+            data={data.swilrs?.video} 
+            onModalClose={() => setshowModalSlider(false)}
+          />
       }
 
     </div>
