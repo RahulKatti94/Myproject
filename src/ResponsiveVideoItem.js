@@ -36,7 +36,7 @@ const ResponsiveVideoItem = ({ item }) => {
       </div>
       {remainingTime && (
         <div className="video-timer">
-          <span>{remainingTime} </span>
+          <span>{ new Date(remainingTime * 1000).toISOString().slice(14, 19)} </span>
         </div> 
       )}
     </React.Fragment>
