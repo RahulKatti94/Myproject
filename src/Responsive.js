@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./swirl.css";
 import { Card, Image, ProgressBar } from "react-bootstrap";
 import ModalSlider from "./ModalSlider";
+import ResponsiveVideoItem from "./ResponsiveVideoItem";
 // import video from "../src/videos/video.mp4";
 // import ModalSlider from "./ModalSlider";
 
@@ -70,17 +71,11 @@ const Responsive = () => {
       },
     ],
   };
-  const cardDetails = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  };
-
+  
   const shoot = (index) => {
     setshowModalSlider(true);
     setSelectedItemIndex(index)
   }
-
 
   return (
     <div className="container" id="closeModal-id">
@@ -108,28 +103,7 @@ const Responsive = () => {
                 >
 
                   <Card.Body className="p-0 d-flex">
-                    <video
-                      id="video"
-                      className=" slider-video card-video"
-                      // play={item.auto_play}
-                      src={item.video_url}
-                      loop
-                      onMouseOver={(event) => event.target.play()}
-                      onMouseOut={(event) => event.target.pause()}
-
-                      mute={item.uto_play_mute_un}
-                      loading="lazy"
-                      style={cardDetails}
-                    ></video>
-                    <div className="viewers d-flex">
-                      <span>
-                        <i className="fa fa-eye  f-icon" aria-hidden="true"></i>
-                      </span>
-                      <span>{item.total_views}</span>
-                    </div>
-                    <div className="video-timer">
-                      <span>{item.time_sec} </span>
-                    </div>
+                    <ResponsiveVideoItem item={item} />
                     <div className="modal-button modal_btn">
 
 

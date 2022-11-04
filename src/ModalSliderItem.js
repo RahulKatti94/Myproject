@@ -117,6 +117,7 @@ const ModalSliderItem = (props) => {
                   className=" slider-video vidio"
                   src={item?.video_url}
                   mute
+                  loop
                   loading="lazy"
                   style={clickModal}
                   ref = {videoRef}
@@ -130,7 +131,6 @@ const ModalSliderItem = (props) => {
                 />
                 {playButtonVisible && (
                   <div className="modal-button modal_btn"
-                  //  onClick={(event) => event.target.play()}
                   onClick={() => setPlayPause((value) => !value )}>
                     <button className="me-2 mb-2 button-border-icon">
                       <img
