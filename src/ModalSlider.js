@@ -21,12 +21,14 @@ import SmallCardProduct from "./SmallCardProduct";
 import  ModelSliderItem  from "./ModalSliderItem";
 
 export const ModalSlider = (props) => {
+  const { data, selectedItemIndex } = props;
+
   const values = [true];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
+  const [activeSlidIndex, setActiveSlideIndex] = useState(selectedItemIndex)
 
-
-  const { data, selectedItemIndex } = props;
+  
 
 
   // const handleClick = () => {
@@ -78,9 +80,13 @@ export const ModalSlider = (props) => {
     slidesToScroll: 1,
     centered: true,
     arrows: true,
+    afterChange: (current) => {
+      debugger
+      setActiveSlideIndex(current)
+    }
   };
   
-
+  console.log(activeSlidIndex)
   return (
     <div className="text-center">
       {/* {values.map((v, idx) => (
@@ -104,9 +110,9 @@ export const ModalSlider = (props) => {
         onHide={() => setShow(false)}
       >
         <Modal.Body closeButton className="modal-class main-div" id="hello-world">
-          <Slider {...settings} lazyLoad initialSlide={selectedItemIndex} className="slider-div transparent-bg  ">
-            {data?.map((item) => {
-              return <ModelSliderItem item={item} setShow={setShow} />
+          <Slider {...settings} lazyLoad="ondemand" initialSlide={selectedItemIndex} className="slider-div transparent-bg  ">
+            {data?.map((item, index) => {
+              return <ModelSliderItem item={item} setShow={setShow} isActiveSlide={index === activeSlidIndex} />
             })}
           </Slider>
         </Modal.Body>

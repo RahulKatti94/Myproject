@@ -8,22 +8,28 @@ import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
 
 const ModalSliderItem = (props) => {
-  const [playPouse, setPlayPOuse] = useState();
+  const [playPause, setPlayPause] = useState(true);
   const videoRef = useRef()
   const {item, setShow} = props
-  
+
   useEffect(() => {
-    if(videoRef.current) {
+    if(playPause && videoRef.current) {
       videoRef.current.play()
     }
 
-    return () => {
-      if(videoRef.current) {
-        videoRef.current.pause()
-        videoRef.currentTime = 0
-      }
+    if(!playPause && videoRef.current) {
+      videoRef.current.pause()
     }
-  }, [videoRef.current])
+  },[playPause, videoRef.current])
+
+  useEffect(() => {
+    setPlayPause(props.isActiveSlide)
+
+    if(!props.isActiveSlide && videoRef) {
+      videoRef.current.currentTime = 0
+    }
+  },[props.isActiveSlide])
+
   const clickModal = {
     width: "100%",
     height: "100%",
@@ -48,8 +54,9 @@ const ModalSliderItem = (props) => {
     return(
         <div className="position-relative vh-100">
               <Card className="modal-background-color"
-              onMouseEnter={() => setPlayPOuse(true)}
-               onMouseLeave={() => setPlayPOuse(false)}>
+                // onMouseEnter={() => setPlayPause(true)}
+                // onMouseLeave={() => setPlayPause(false)}
+              >
                 <div className="card-header">
                   <i
                     title={"More"}
@@ -114,21 +121,22 @@ const ModalSliderItem = (props) => {
                 
                 <div className="modal-button modal_btn"
                 //  onClick={(event) => event.target.play()}
-                 onClick={(event) => event.target.pause()}>
-                {playPouse &&
+                 onClick={() => setPlayPause((value) => !value )}>
                   <button className="me-2 mb-2 button-border-icon">
                     <img
                       title={"Play/Pause"}
                       className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                      src={
+                        playPause 
+                        ? "https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pause.svg"
+                        : "https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
+                      }
                       alt="Play/Pause icon"
                       height=""
                       width=""
                     />
-
                     {/* <i className="fa fa-play pause-play-icon"></i> */}
                   </button>
-                   }
                 </div>
                 <div className="modal-button modal_btn" 
                 style={{display : "none"}}
