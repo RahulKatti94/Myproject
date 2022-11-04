@@ -10,6 +10,7 @@ import SmallCardProduct from "./SmallCardProduct";
 const ModalSliderItem = (props) => {
   const [playPause, setPlayPause] = useState(true);
   const [playButtonVisible, setPlayButtonVisible] = useState(false)
+  const [videoProgressValue, setVideoProgressValue] = useState(0)
 
   const videoRef = useRef()
   const {item, setShow} = props
@@ -38,6 +39,9 @@ const ModalSliderItem = (props) => {
     objectFit: "cover",
   };
 
+  const handleTimeUpdate = (e) => {
+    setVideoProgressValue((e.target.currentTime / e.target.duration) * 100)
+  }
 
   function shareIconModal(props) {
         const sharedIconModal = document.getElementsByClassName(props);
@@ -109,16 +113,20 @@ const ModalSliderItem = (props) => {
                     iconVisitModal={() => shareIconModal("three-rated-dot1")}
                   />
                 </div>
-
                 <video
                   className=" slider-video vidio"
                   src={item?.video_url}
-                  // loop
-                  // autoPlay
                   mute
                   loading="lazy"
                   style={clickModal}
                   ref = {videoRef}
+                  onTimeUpdate={handleTimeUpdate}
+                />  
+                <ProgressBar
+                  className="p-bar"
+                  now={videoProgressValue}
+                  style={{ width: "100%" }}
+                  variant="secondary"
                 />
                 {playButtonVisible && (
                   <div className="modal-button modal_btn"
@@ -141,29 +149,6 @@ const ModalSliderItem = (props) => {
                     </button>
                   </div>
                 )}
-                <div className="modal-button modal_btn" 
-                style={{display : "none"}}
-                 >
-                  <button className="me-2 mb-2 button-border-icon">
-                  <img
-                      title={"Play/Pause"}
-                      className="pause-play-icon"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/play.svg"
-                      alt="Play/Pause icon"
-                      height=""
-                      width=""
-                      />
-
-                    {/* <i className="fa fa-play pause-play-icon"></i> */}
-                  </button>
-                </div>
-                <ProgressBar
-                  className="p-bar"
-                  now="30"
-                  style={{ width: "100%" }}
-                  variant="secondary"
-                />
-
                 <div
                   className="Small-card-product-component target-image1"
                   style={{ display: "none" }}
