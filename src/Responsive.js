@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./swirl.css";
-import { Card, Image, ProgressBar } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import ModalSlider from "./ModalSlider";
 import ResponsiveVideoItem from "./ResponsiveVideoItem";
 // import video from "../src/videos/video.mp4";
@@ -13,18 +13,11 @@ import ResponsiveVideoItem from "./ResponsiveVideoItem";
 
 
 const Responsive = () => {
-  // const [isShown, setIsShown] = useState(true);
+
   const [style, setStyle] = useState({ display: 'block' });
   const [mouseHoverElementIndex, setmouseHoverElementIndex] = useState();
   const [showModalSlider, setshowModalSlider] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState();
-  // const [isgiven, setIsgiven] = useState(true);
-  // const [isstate, setIsstate] = useState(true);
-  // const [isover, setIsover] =   useState(true);
-  // const [isvalue, setIsvalue] = useState(true);
-  // const [istaken, setIstaken] = useState(true);
-  // const [isdone, setIsdone] = useState(true);
-
 
   const [data, setData] = useState([]);
 
@@ -144,15 +137,6 @@ const Responsive = () => {
                         ))
                         : null
                     }
-
-                    <ProgressBar
-                      className="p-bar"
-                      now="30"
-                      style={{ width: "100%" }}
-
-                      variant="secondary"
-                      play={item.auto_play_video}
-                    />
                   </Card.Footer>
                 </Card></div>)
               })
@@ -164,6 +148,7 @@ const Responsive = () => {
           <ModalSlider
             selectedItemIndex={selectedItemIndex}
             data={data.swilrs?.video} 
+            product = {data.swilrs?.data}
             onModalClose={() => setshowModalSlider(false)}
           />
       }

@@ -1,5 +1,5 @@
-// import CardProduct from './CardProduct';
-// import CarToyProduct from './CarToyProduct';
+import CardProduct from './CardProduct';
+import CarToyProduct from './CarToyProduct';
 import ModalSlider from './ModalSlider';
 //  import ThreeDots from './ThreeDots';
 // import MouseOver from './Mouseover';
@@ -41,9 +41,9 @@ function App() {
       
       {/* <Askquestion /> */}
        {/* <ShareModal /> */}
-       {/* <CardProduct /> */}
-        {/* <SmallCardProduct /> */}
-       {/* <CarToyProduct /> */}
+       <CardProduct />
+        <SmallCardProduct />
+       <CarToyProduct />
        {/* <ThreeDots /> */}
        {/* <UseEffectAPi /> */}
        {/* <FetchApi /> */}
@@ -52,7 +52,7 @@ function App() {
             
     </div>
   );
-}
+} 
 
 export default App;
 

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
 import { Card, Image } from "react-bootstrap";
 import "./Askquestion.css";
-import Responsive from "./Responsive";
 
 const SmallCardProduct = ( {CarDetailsShare}) => {
 

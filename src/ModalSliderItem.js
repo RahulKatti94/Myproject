@@ -6,15 +6,17 @@ import ShareModal from "./ShareModal";
 import ThreeDots from "./ThreeDots";
 import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
+import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
 const ModalSliderItem = (props) => {
   const [playPause, setPlayPause] = useState(true);
   const [playButtonVisible, setPlayButtonVisible] = useState(false)
   const [videoProgressValue, setVideoProgressValue] = useState(0)
+  const [ProgressBar, setProgress] = useState(false)
 
   const videoRef = useRef()
   const {item, setShow} = props
-
+  console.log(item)
   useEffect(() => {
     if(playPause && videoRef.current) {
       videoRef.current.play()
@@ -110,6 +112,7 @@ const ModalSliderItem = (props) => {
                   style={{ display: "none" }}
                 >
                   <ThreeDots
+                  product = {props.product}
                     iconVisitModal={() => shareIconModal("three-rated-dot1")}
                   />
                 </div>
