@@ -1,7 +1,7 @@
 import { Card, Image } from "react-bootstrap";
 import "./Askquestion.css";
 
-const SmallCardProduct = ( {CarDetailsShare}) => {
+const SmallCardProduct = ( {CarDetailsShare , product}) => {
 
   return (
     <div className="container">
@@ -33,6 +33,7 @@ const SmallCardProduct = ( {CarDetailsShare}) => {
               Mini Hummer </b><br /> $ 549
             </p>
           </div>
+          
           <div className="d-flex flex-row m-2">
             <Image
               className="small-card-product-image small-card-arrow"

@@ -34,6 +34,7 @@ const ResponsiveVideoItem = ({ item }) => {
         style={cardDetails}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata = {handleLoadStart}
+        autoPlay = {item.multiple_product}
       ></video>
       <div className="viewers d-flex">
         <span>
@@ -52,6 +53,7 @@ const ResponsiveVideoItem = ({ item }) => {
                       now={videoProgressValue}
                       variant="secondary"
                       play={item.auto_play_video}
+                      
                     />
     </React.Fragment>
   )

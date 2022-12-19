@@ -2,17 +2,17 @@ import React, {useState, useRef, useEffect} from 'react'
 import { Image, Card, ProgressBar } from "react-bootstrap";
 
 import Askquestion from "./Askquestion";
+
 import ShareModal from "./ShareModal";
 import ThreeDots from "./ThreeDots";
-import CardProduct from "./CardProduct";
+// import CardProduct from "./CardProduct";
 import SmallCardProduct from "./SmallCardProduct";
-import DropdownItem from 'react-bootstrap/esm/DropdownItem';
+// import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
 const ModalSliderItem = (props) => {
   const [playPause, setPlayPause] = useState(true);
   const [playButtonVisible, setPlayButtonVisible] = useState(false)
   const [videoProgressValue, setVideoProgressValue] = useState(0)
-  const [ProgressBar, setProgress] = useState(false)
 
   const videoRef = useRef()
   const {item, setShow} = props
@@ -34,6 +34,21 @@ const ModalSliderItem = (props) => {
       videoRef.current.currentTime = 0
     }
   },[props.isActiveSlide])
+
+
+   const muteUnMuteBtn = ()=>{
+    videoRef.current.muted = !videoRef.current.muted
+  }
+
+  const pipModeActive = ()=>{
+
+    if (document.pictureInPictureElement) {
+      videoRef.current.exitPictureInPicture();
+    } else if (document.pictureInPictureEnabled) {
+      videoRef.current.requestPictureInPicture();
+    }
+  }
+  
 
   const clickModal = {
     width: "100%",
@@ -73,21 +88,27 @@ const ModalSliderItem = (props) => {
                     onClick={() => shareIconModal("three-rated-dot1")}
                   ></i>
                   <p className="txt ">{item?.video_title}</p>
-                  <span className="icon-border">
-                    <Image
+                  <span className="icon-border"
+                  onClick={pipModeActive}>
+                    <Image  
                       title={"PIP Mode"}
                       className="modal-first-para"
                       id="closeIconId"
-                      onClick={() => setShow(false)}
                       src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/pip.svg"
+                      onClick={() => {props.onModalClose() }}
                     />
                   </span>
 
-                  <span className="icon-border">
+                  <span className="icon-border"
+                  
+                  onClick={muteUnMuteBtn}>
                     <img
                       title={"Mute/Unmute"}
                       className="doticons"
-                      src="https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
+                      src={videoRef.current?.muted
+                         ?"https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/mute.svg"
+                        : "https://cdn.jsdelivr.net/gh/SwirlAdmin/swirl-cdn@latest/assets/images/unmute.svg"
+                      }
                       alt="Share icon"
                       height={"28px"}
                       width=""
@@ -157,6 +178,7 @@ const ModalSliderItem = (props) => {
                   style={{ display: "none" }}
                 >
                   <SmallCardProduct
+                     product = {props.product}
                     CarDetailsShare = {() => shareIconModal("target-image1")}
                   />
                 </div>

@@ -63,6 +63,6 @@ export const ModalSlider = (props) => {
       </Modal>
     </div>
   );
-};
+};  
 
 export default ModalSlider;

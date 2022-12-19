@@ -7,7 +7,6 @@ import "./swirl.css";
 import { Card, Image } from "react-bootstrap";
 import ModalSlider from "./ModalSlider";
 import ResponsiveVideoItem from "./ResponsiveVideoItem";
-// import video from "../src/videos/video.mp4";
 // import ModalSlider from "./ModalSlider";
 
 
@@ -85,11 +84,15 @@ const Responsive = () => {
                   className="border-0 shabaash"
                   dataBackdrop="static" dataKeyboard="false"
                   // onMouseEnter={() => setIsShown(false)}
+                  // onMouseOver={(event) => event.target.play()}
                   // onMouseLeave={() => setIsShown(true)}
-                  onMouseOver={(e) => {
-                    setmouseHoverElementIndex(index);
-                    setStyle({ display: 'none' });
+                  onMouseOver = {(event) => {
+                    setmouseHoverElementIndex(index)
+                    setStyle({ display: "none" })
+                    event.target.play()
                   }}
+
+                  
                   onMouseOut={(e) => {
                     setStyle({ display: 'block' });
                   }}
@@ -107,18 +110,20 @@ const Responsive = () => {
                     </div>
                   </Card.Body>
                   <Card.Footer className="footer-card border border-top-0">
-                    <div className="footer-pic">
-                      <Image
-                        className="imagesmall w3-round-large"
-                        src="/images/car.jpg"
-                      />{" "}
-                    </div>
+
                     {
                       item.product && item.product.length > 0 ?
                         item.product.map((itm, idx) => (
 
                           idx === 0 ?
                             <>
+                             <div className="footer-pic">
+                      <Image
+                        className="imagesmall w3-round-large"
+                        src={itm.image}
+                        alt = "Image Area"
+                      />
+                    </div>
                               <h5 className="footer-heading">
                                 <b>{itm.title}</b>
                               </h5>
@@ -130,6 +135,10 @@ const Responsive = () => {
                                     : null
                                 }
                               </p>
+                              
+
+
+                    
                             </>
                             : null
 
