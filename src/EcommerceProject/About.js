@@ -1,6 +1,15 @@
+import HeroSection from "./component/HeroSection";
+
 const About = ()=>{
-    return (
-        <div>About Page</div>
-    )
+    const data = {
+        name : "My Ecommerce site",
+    }
+    return ( 
+        <>
+        <HeroSection myData={data} />
+        {/* <Services /> */}
+        {/* <Trusted/> */}
+        </>
+        )
 }
 export default About;
