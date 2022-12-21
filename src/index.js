@@ -4,12 +4,14 @@ import './index.css';
 // import App from './App';
 import App from './EcommerceProject/App';
 import reportWebVitals from './reportWebVitals';
+import { AppProvider } from './EcommerceProject/context/productcontex';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode basename = "/Slider">
+ <AppProvider>
     <App />
-  </React.StrictMode>
+    </AppProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
