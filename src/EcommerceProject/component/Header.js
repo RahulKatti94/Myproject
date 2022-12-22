@@ -25,7 +25,7 @@ const Header = () =>{
     return (    
         <MainHeader>
            <NavLink to="/">
-            <img src="./images/Rahul.png " alt=" Comapny Logo" />
+            <img className="logo" src="./images/shopify-logo.png " alt=" Comapny Logo" />
            </NavLink>
            <Nav />
         </MainHeader>
