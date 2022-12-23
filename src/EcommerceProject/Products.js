@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useFilterContext } from "../EcommerceProject/context/Filter_context"
+// import { useFilterContext } from "../EcommerceProject/context/Filter_context"
 import Sort from "../EcommerceProject/component/Sort"
 import FilterSection from "../EcommerceProject/component/FilterSection"
 import ProductList from "../EcommerceProject/component/ProductList"

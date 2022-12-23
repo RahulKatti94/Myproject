@@ -36,13 +36,16 @@ const ListView = ({ products }) => {
 
 const Wrapper = styled.section`
   padding: 9rem 0;
+ 
 
   .container {
     max-width: 120rem;
+
   }
 
   .grid {
     gap: 3.2rem;
+    
   }
 
   figure {
@@ -56,7 +59,7 @@ const Wrapper = styled.section`
     &::after {
       content: "";
       position: absolute;
-      top: 0;
+      top: 0rem;
       left: 0;
       width: 0%;
       height: 100%;
@@ -83,6 +86,7 @@ const Wrapper = styled.section`
 
     .card-data {
       padding: 0 2rem;
+      
     }
 
     h3 {
