@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { BsFillGridFill, BsList } from "react-icons/bs";
-import { useFilterContext } from "../context/Filter_context"
+import { useFilterContext } from "../context/Filter_context";
 
 const Sort = () => {
   const { filter_products, grid_view, setGridView, setListView, sorting } =
     useFilterContext();
   return (
-    <Wrapper className="sort-section">
+    <Wrapper className="section">
       {/* 1st column  */}
       <div className="sorting-list--grid">
         <button
@@ -35,7 +35,7 @@ const Sort = () => {
             name="sort"
             id="sort"
             className="sort-selection--style"
-            onClick={sorting}>
+            onChange={sorting}>
             <option value="lowest">Price(lowest)</option>
             <option value="#" disabled></option>
             <option value="highest">Price(highest)</option>

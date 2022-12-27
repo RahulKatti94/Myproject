@@ -1,8 +1,8 @@
 import styled from "styled-components";
-// import { useFilterContext } from "../EcommerceProject/context/Filter_context"
 import Sort from "../EcommerceProject/component/Sort"
-import FilterSection from "../EcommerceProject/component/FilterSection"
 import ProductList from "../EcommerceProject/component/ProductList"
+import FilterSection from "../EcommerceProject/component/FilterSection"
+import { useFilterContext } from "./context/Filter_context";
 
 const Products = () => {
   return (
@@ -37,4 +37,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default Products;
+export default Products;  
