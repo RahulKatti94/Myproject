@@ -7,7 +7,7 @@ const Sort = () => {
   const { filter_products, grid_view, setGridView, setListView, sorting } =
     useFilterContext();
   return (
-    <Wrapper className="section">
+    <Wrapper className="sort-section">
       {/* 1st column  */}
       <div className="sorting-list--grid">
         <button
@@ -35,7 +35,7 @@ const Sort = () => {
             name="sort"
             id="sort"
             className="sort-selection--style"
-            onChange={sorting}>
+            onClick={sorting}>
             <option value="lowest">Price(lowest)</option>
             <option value="#" disabled></option>
             <option value="highest">Price(highest)</option>
