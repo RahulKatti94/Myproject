@@ -6,13 +6,16 @@ import App from "./EcommerceProject/App";
 import reportWebVitals from "./reportWebVitals";
 import { AppProvider } from "./EcommerceProject/context/productcontex";
 import { FilterContextProvider } from "../src/EcommerceProject/context/Filter_context";
+import { CartProvider } from "../src/EcommerceProject/context/Cart_context";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AppProvider>
     <FilterContextProvider>
+    <CartProvider>
       <App />
+      </CartProvider>
     </FilterContextProvider>
   </AppProvider>
 );
