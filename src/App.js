@@ -1,5 +1,6 @@
 // import CardProduct from './CardProduct';
 // import CarToyProduct from './CarToyProduct';
+import HelloWorld from './HelloWorld';
 import ModalSlider from './ModalSlider';
 //  import ThreeDots from './ThreeDots';
 // import MouseOver from './Mouseover';
@@ -15,16 +16,16 @@ import Responsive from './Responsive';
 // import VideoSection from './VideoSection';
 // 
 
-import Iframe from './Iframe';
+// import Iframe from './Iframe';
 function App() {
 
   // const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className="">
       
-      <Responsive />   
+      {/* <Responsive />    */}
       <div  style={{display : "none"}}>   
-      <ModalSlider  />
+      {/* <ModalSlider  /> */}
       </div>
       {/* <MouseOver /> */}
       {/* <button
@@ -50,7 +51,7 @@ function App() {
        {/* <FetchApi /> */}
        {/* <VideoSection /> */}
        {/* <Iframe /> */}
-            
+      <HelloWorld />
     </div>
   );
 }
