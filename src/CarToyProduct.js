@@ -31,8 +31,8 @@ const CarToyProduct = () => {
             <p>It is Miniature Beetle in Yellow color, looking very cute.</p>
             </div>
             <div className="row">
-                <div className="col-4"></div>
-          <div className="mb-3 col-7 text-center d-flex">
+                <div className="col-5"></div>
+          <div className="mb-3 col-2 text-center d-flex justify-content-between">
             <button className="card-product-another-button" >Add To Cart</button>
             <button className="card-product-button">Show Me</button>
             </div>

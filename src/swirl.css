@@ -97,6 +97,7 @@
   height: 0.35rem !important;
   position: absolute;
   bottom: 0;
+  z-index: 5;
 }
 
 .modal-button {
@@ -104,7 +105,7 @@
   align-items: center;
   justify-content: center;
   bottom: 50%;
-  right: 45%;
+  left: 45%;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -124,11 +125,20 @@
   height: 100% !important;
   margin-left: -20px !important;
 }
+
+.main-div{
+	background-image: url(../public/images/myProjectBgFinalImg.jpg);
+    background-attachment: scroll;
+    padding: 20px;  
+}
+
+
 .button-border {
-  background-color: black;
-  opacity: 0.7;
-  width: 40px;
-  height: 40px;
+  background: rgb(0 0 0 / 60%);
+  box-shadow: 0 5px 16px 0 rgb(0 0 0 / 10%);
+  border: none;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -138,8 +148,30 @@
 
 .icon-size {
   font-size: 20px;
-  color: white;
+  color: #ffffff;
 }
+/* ModalSlider-Icon Details */
+
+.pause-play-icon{
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+}
+.button-border-icon{
+
+  background: rgb(0 0 0 / 60%);
+  box-shadow: 0 5px 16px 0 rgb(0 0 0 / 10%);
+  border: none;
+  width: 55px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .modal-class {
   background-color: #2e2e2e;
   padding: 0 !important;
@@ -221,6 +253,7 @@
   vertical-align: 2px;
 }
 
+
 .Component-position{
     position: absolute;
     top: 35%;
@@ -229,6 +262,7 @@
     height: 100%;
     padding: 0 15px !important;
 }
+
 .vidio {
   position: relative;
   border-radius: 0.375rem;
@@ -245,10 +279,6 @@
   cursor: pointer;
 }
 
-
-/* .icon-div{
-  margin-top: 10px !important;
-} */
 .footer-border {
   display: flex;
   height: 1.8rem;
@@ -346,11 +376,14 @@
 }
 /* threedots file  */
 
-.three-dots-main-div-class{
-  width: 70% !important;
+.three-dots-main-div-class-element{
+  width: 70.5% !important;
+  height: 100% !important;
   z-index: 15;
-  height: max-content !important;
   position: absolute;
+  top: -10px;
+ left: 0;
+
   
 }
 
